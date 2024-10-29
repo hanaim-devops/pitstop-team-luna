@@ -99,7 +99,7 @@ public class WorkshopPlanning : AggregateRoot<WorkshopPlanningId>
     {
         MaintenanceJob job = Jobs.FirstOrDefault(j => j.Id == e.JobId);
         Timeslot actualTimeslot = Timeslot.Create(e.StartTime, e.EndTime);
-        job.Start(actualTimeslot, e.Notes);
+        job.Start(actualTimeslot, "");
     }
     
     private void Handle(MaintenanceJobFinished e)

@@ -11,5 +11,20 @@ public class MaintenanceJobDTO
     public DateTime? ActualStartTime { get; set; }
     public DateTime? ActualEndTime { get; set; }
     public string Notes { get; set; }
-    public string Status => (!ActualStartTime.HasValue && !ActualEndTime.HasValue) ? "Planned" : "Completed";
+    public string Status
+    {
+        get
+        {
+            if(ActualStartTime != null)
+            {
+                return "Started";
+            }else if (ActualEndTime != null)
+
+            {
+                return "Completed";
+            } else {
+                return "Planned";
+            }
+        }
+    }
 }

@@ -8,7 +8,19 @@
         {
             get
             {
-                return ActualEndTime != null ? "Completed" : "Planned";
+                if (ActualEndTime != null)
+                {
+                    return "Completed";
+                }
+                else if (ActualStartTime != null)
+                {
+                    return "Started";
+                }
+                else
+                {
+                    return "Planned";
+                }
+
             }
         }
 

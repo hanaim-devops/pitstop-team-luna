@@ -35,7 +35,7 @@
             <td width="150">Owner :</td>
             <td><b><a href='@(Url.Action("Details", "CustomerManagement", new { id = Model.MaintenanceJob.Customer.CustomerId }))'>@Model.MaintenanceJob.Customer.Name [@Model.MaintenanceJob.Customer.TelephoneNumber]</a></b></td>
         </tr>
-        @if (Model.MaintenanceJob.Status != "Planned")
+        @if (Model.MaintenanceJob.Status == "Started")
         {
             <tr>
                 <td width="150">Actual Start time :</td>
@@ -49,6 +49,21 @@
                 <td width="150">Mechanic notes :</td>
                 <td><b>@Model.MaintenanceJob.Notes</b></td>
             </tr>
+        }
+        @if (Model.MaintenanceJob.Status == "Planned")
+        {
+        <tr>
+            <td width="150">Actual Start time :</td>
+            <td><b>@Model.MaintenanceJob.ActualStartTime</b></td>
+        </tr>
+        <tr>
+            <td width="150">Actual End time :</td>
+            <td><b>@Model.MaintenanceJob.EndTime</b></td>
+        </tr>
+        <tr>
+            <td width="150">Mechanic notes :</td>
+            <td><b>@Model.MaintenanceJob.Notes</b></td>
+        </tr>
         }
     </tbody>
 </table>

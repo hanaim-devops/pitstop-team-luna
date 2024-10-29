@@ -1,12 +1,13 @@
-﻿namespace Pitstop.WorkshopManagementAPI.Commands;
+﻿namespace Pitstop.WorkshopManagementEventHandler.Events;
 
-public class StartMaintenanceJob: Command
+public class MaintenanceJobStart : Event
 {
     public readonly Guid JobId;
     public readonly DateTime StartTime;
     public readonly DateTime EndTime;
 
-    public StartMaintenanceJob(Guid messageId, Guid jobId, DateTime startTime, DateTime endTime) :
+
+    public MaintenanceJobStart(Guid messageId, Guid jobId, DateTime startTime, DateTime endTime) :
         base(messageId)
     {
         JobId = jobId;

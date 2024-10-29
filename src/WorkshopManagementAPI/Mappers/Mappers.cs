@@ -17,8 +17,7 @@ public static class Mappers
         Guid.NewGuid(),
         source.JobId,
         source.StartTime,
-        source.EndTime,
-        source.Notes
+        source.EndTime
     );
     
     public static MaintenanceJobFinished MapToMaintenanceJobFinished(this FinishMaintenanceJob source) => new MaintenanceJobFinished

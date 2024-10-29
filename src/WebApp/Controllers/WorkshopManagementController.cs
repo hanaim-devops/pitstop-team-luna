@@ -174,11 +174,10 @@
             return await _resiliencyHelper.ExecuteResilient(async () =>
             {
                 string dateStr = inputModel.Date.ToString("yyyy-MM-dd");
-                DateTime actualStartTime = inputModel.Date.Add(inputModel.ActualStartTime.Value.TimeOfDay);
-                DateTime actualEndTime = inputModel.Date.Add(inputModel.ActualEndTime.Value.TimeOfDay);
+                DateTime actualStartTime = DateTime.Now;
 
                 StartMaintenanceJob cmd = new StartMaintenanceJob(Guid.NewGuid(), inputModel.Id,
-                    actualStartTime, actualEndTime, inputModel.Notes);
+                    actualStartTime);
 
                 await _workshopManagementAPI.StartMaintenanceJob(dateStr, inputModel.Id.ToString("D"), cmd);
 
