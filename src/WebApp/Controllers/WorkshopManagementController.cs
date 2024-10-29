@@ -92,6 +92,25 @@
             return View(model);
         }, View("Offline", new WorkshopManagementOfflineViewModel()));
     }
+    
+    [HttpGet]
+    public async Task<IActionResult> Start(DateTime planningDate, string jobId)
+    {
+        return await _resiliencyHelper.ExecuteResilient(async () =>
+        {
+            string dateStr = planningDate.ToString("yyyy-MM-dd");
+            MaintenanceJob job = await _workshopManagementAPI.GetMaintenanceJob(dateStr, jobId);
+            var model = new WorkshopManagementStartViewModel()
+            {
+                Id = job.Id,
+                Date = planningDate,
+                ActualStartTime = job.StartTime,
+                ActualEndTime = job.EndTime
+            };
+            return View(model);
+        }, View("Offline", new WorkshopManagementOfflineViewModel()));
+    }
+    
 
     [HttpPost]
     public async Task<IActionResult> RegisterMaintenanceJob([FromForm] WorkshopManagementNewViewModel inputModel)
@@ -167,14 +186,15 @@
     }
     
     [HttpPut]
-    public async Task<IActionResult> StartMaintenanceJob([FromForm] WorkshopManagementFinishViewModel inputModel)
+    public async Task<IActionResult> StartMaintenanceJob([FromForm] WorkshopManagementStartViewModel inputModel)
     {
         if (ModelState.IsValid)
         {
             return await _resiliencyHelper.ExecuteResilient(async () =>
             {
                 string dateStr = inputModel.Date.ToString("yyyy-MM-dd");
-                DateTime actualStartTime = DateTime.Now;
+                DateTime actualStartTime = inputModel.Date.Add(inputModel.ActualStartTime.Value.TimeOfDay);
+                DateTime actualEndTime = inputModel.Date.Add(inputModel.ActualEndTime.Value.TimeOfDay);
 
                 StartMaintenanceJob cmd = new StartMaintenanceJob(Guid.NewGuid(), inputModel.Id,
                     actualStartTime);
@@ -186,7 +206,7 @@
         }
         else
         {
-            return View("Details");
+            return View("Start", inputModel);
         }
     }
     
