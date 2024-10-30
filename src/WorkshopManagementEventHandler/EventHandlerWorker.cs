@@ -49,6 +49,9 @@ public class EventHandlerWorker : IHostedService, IMessageHandlerCallback
                 case "MaintenanceJobPlanned":
                     await HandleAsync(messageObject.ToObject<MaintenanceJobPlanned>());
                     break;
+                case "MaintenanceJobStart":
+                    await HandleAsync(messageObject.ToObject<MaintenanceJobStart>());
+                    break;
                 case "MaintenanceJobFinished":
                     await HandleAsync(messageObject.ToObject<MaintenanceJobFinished>());
                     break;
@@ -176,6 +179,27 @@ public class EventHandlerWorker : IHostedService, IMessageHandlerCallback
             job.ActualStartTime = e.StartTime;
             job.ActualEndTime = e.EndTime;
             job.Notes = e.Notes;
+            await _dbContext.SaveChangesAsync();
+        }
+        catch (DbUpdateException)
+        {
+            Log.Warning("Skipped adding maintenance job with id {JobId}.", e.JobId);
+        }
+
+        return true;
+    }
+    
+    private async Task<bool> HandleAsync(MaintenanceJobStart e)
+    {
+        Log.Information("Finish Maintenance job: {JobId}, {ActualStartTime}",
+            e.JobId, e.StartTime);
+
+        try
+        {
+            // insert maintetancejob
+            var job = await _dbContext.MaintenanceJobs.FirstOrDefaultAsync(j => j.Id == e.JobId);
+            job.ActualStartTime = e.StartTime;
+            
             await _dbContext.SaveChangesAsync();
         }
         catch (DbUpdateException)

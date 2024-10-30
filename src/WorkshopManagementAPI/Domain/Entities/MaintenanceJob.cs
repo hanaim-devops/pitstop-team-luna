@@ -8,11 +8,28 @@ public class MaintenanceJob : Entity<Guid>
     public string Description { get; private set; }
     public Timeslot ActualTimeslot { get; private set; }
     public string Notes { get; private set; }
-    public string Status => (ActualTimeslot == null) ? "Planned" : "Completed";
+
+    public string Status
+    {
+        get
+        {
+            if (PlannedTimeslot != null)
+            {
+                return "Planned";
+            }
+            else if (ActualTimeslot != null)
+            {
+                return "Started";
+            }
+            else
+            {
+                return "Completed";
+            }
+        }
+    }
 
     public MaintenanceJob(Guid id) : base(id)
     {
-
     }
 
     public void Plan(Timeslot timeslot, Vehicle vehicle, Customer customer, string description)
@@ -25,16 +42,13 @@ public class MaintenanceJob : Entity<Guid>
 
     public void Start(Timeslot actualTimeslot, string notes)
     {
-
         ActualTimeslot = actualTimeslot;
         Notes = notes;
     }
-    
+
     public void Finish(Timeslot actualTimeslot, string notes)
     {
-
         ActualTimeslot = actualTimeslot;
         Notes = notes;
     }
-
 }

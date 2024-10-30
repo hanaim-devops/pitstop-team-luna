@@ -11,18 +11,22 @@ public class MaintenanceJobDTO
     public DateTime? ActualStartTime { get; set; }
     public DateTime? ActualEndTime { get; set; }
     public string Notes { get; set; }
+
     public string Status
     {
         get
         {
-            if(ActualStartTime != null)
+            if (ActualStartTime != null)
             {
                 return "Started";
-            }else if (ActualEndTime != null)
+            }
+            else if (ActualEndTime != null)
 
             {
                 return "Completed";
-            } else {
+            }
+            else
+            {
                 return "Planned";
             }
         }
