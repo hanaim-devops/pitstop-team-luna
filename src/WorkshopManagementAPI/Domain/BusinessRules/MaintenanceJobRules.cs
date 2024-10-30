@@ -22,7 +22,7 @@ public static class MaintenanceJobRules
     {
         if (job.Status == "Completed" | job.Status== "Started")
         {
-            throw new BusinessRuleViolationException($"Job has already been started or finished.");
+            throw new BusinessRuleViolationException($"Job has already been started or finished or started.");
         }
     }
 }

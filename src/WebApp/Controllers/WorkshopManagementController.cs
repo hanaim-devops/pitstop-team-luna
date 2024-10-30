@@ -185,31 +185,49 @@
         }
     }
     
-    [HttpPut]
+    [HttpPost]
     public async Task<IActionResult> StartMaintenanceJob([FromForm] WorkshopManagementStartViewModel inputModel)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            return await _resiliencyHelper.ExecuteResilient(async () =>
+            foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
             {
-                string dateStr = inputModel.Date.ToString("yyyy-MM-dd");
-                DateTime actualStartTime = inputModel.Date.Add(inputModel.ActualStartTime.Value.TimeOfDay);
-                DateTime actualEndTime = inputModel.Date.Add(inputModel.ActualEndTime.Value.TimeOfDay);
-
-                StartMaintenanceJob cmd = new StartMaintenanceJob(Guid.NewGuid(), inputModel.Id,
-                    actualStartTime);
-
-                await _workshopManagementAPI.StartMaintenanceJob(dateStr, inputModel.Id.ToString("D"), cmd);
-
-                return RedirectToAction("Details", new { planningDate = dateStr, jobId = inputModel.Id });
-            }, View("Offline", new WorkshopManagementOfflineViewModel()));
-        }
-        else
-        {
+                Console.WriteLine($"Model error: {error.ErrorMessage}");
+            }
             return View("Start", inputModel);
         }
-    }
     
+        if (inputModel.ActualStartTime == null || inputModel.ActualEndTime == null)
+        {
+            Console.WriteLine("Error: ActualStartTime or ActualEndTime is null.");
+            return View("Start", inputModel);
+        }
+
+        return await _resiliencyHelper.ExecuteResilient(async () =>
+        {
+            string dateStr = inputModel.Date.ToString("yyyy-MM-dd");
+            DateTime actualStartTime = inputModel.Date.Add(inputModel.ActualStartTime.Value.TimeOfDay);
+            DateTime actualEndTime = inputModel.Date.Add(inputModel.ActualEndTime.Value.TimeOfDay);
+        
+            var commandId = Guid.NewGuid();
+            Console.WriteLine($"Generated Command ID: {commandId}");
+            Console.WriteLine($"Input Model ID: {inputModel.Id}");
+            StartMaintenanceJob cmd = new StartMaintenanceJob(commandId, inputModel.Id, actualStartTime);
+
+            try
+            {
+                await _workshopManagementAPI.StartMaintenanceJob(dateStr, inputModel.Id.ToString("D"), cmd);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error calling StartMaintenanceJob API: {ex.Message}");
+            }
+        
+            Console.WriteLine($"Redirecting to Details with planningDate: {dateStr}, jobId: {inputModel.Id}");
+            return RedirectToAction("Details", new { planningDate = dateStr, jobId = inputModel.Id });
+        }, View("Offline", new WorkshopManagementOfflineViewModel()));
+    }
+
     
     public IActionResult Error()
     {
