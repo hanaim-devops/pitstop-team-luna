@@ -46,4 +46,4 @@ spec:
       targetPort: 6001
       nodePort: 30027
   selector:
-    app: customersupportapi
+    app: cloud-custodian
