@@ -24,36 +24,43 @@ graph TD
     Externe_APIs[Externe Systemen]
     
 ```
+
 ## Container
 
 ```mermaid
 graph TD
     subgraph PitStop
         WebApp[User Interface]
+        CustomerSupportAPI[Customer Support API]
         CustomerManagementAPI[Customer Management API]
         RepairManagementAPI[Repair Management API]
         VehicleManagementAPI[Vehicle Management API]
         NotificationService[Notification Service]
         WorkshopManagementAPI[Workshop Management API]
         InvoiceService[Invoice Service]
+        CustomerSupportService[Customer Support Service]
         WorkshopManagementEventHandler[Workshop Management EventHandler]
 
         WebApp --> CustomerManagementAPI
         WebApp --> RepairManagementAPI
         WebApp --> VehicleManagementAPI
         WebApp --> WorkshopManagementAPI
+        WebApp --> CustomerSupportAPI
         RepairManagementAPI --> NotificationService
         WorkshopManagementAPI --> NotificationService
         WorkshopManagementAPI --> InvoiceService
         WorkshopManagementAPI --> WorkshopManagementEventHandler
+        CustomerSupportAPI --> CustomerSupportService
     end
 
     style PitStop fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style CustomerSupportAPI fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style CustomerManagementAPI fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style RepairManagementAPI fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style VehicleManagementAPI fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style NotificationService fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style InvoiceService fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportService fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style WorkshopManagementAPI fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style WorkshopManagementEventHandler fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style WebApp fill:#f96,stroke:#333,stroke-width:1px,color:#000000
@@ -75,7 +82,7 @@ graph TD
         RepairManagementProgram[Program.cs]
         RepairManagementDatabase[(Database)]
 
-        RepairManagementProgram --> RepairManagement
+        RepairManagementProgram --> RepairManagementControllers
         RepairManagementProgram --> RepairManagementMigrations
         RepairManagementProgram --> RepairManagementConfiguration
         RepairManagementControllers --> RepairManagementCommands
@@ -108,6 +115,41 @@ graph TD
         NotificationServiceSlackMessenger --> NotificationServiceTemplates
     end
 
+    subgraph CustomerSupportAPI
+        CustomerSupportAPIControllers[Controllers]
+        CustomerSupportAPIEvents[Events]
+        CustomerSupportAPIModels[Models]
+        CustomerSupportAPIRepositories[Repositories]
+        CustomerSupportAPIConfig[Configuration Files]
+        CustomerSupportAPIProgram[Program.cs]
+        CustomerSupportAPIRepository[(Database)]
+        CustomerSupportAPIProgram --> CustomerSupportAPIControllers
+        CustomerSupportAPIProgram --> CustomerSupportAPIConfig
+        CustomerSupportAPIProgram --> CustomerSupportAPIRepositories
+        CustomerSupportAPIControllers --> CustomerSupportAPIEvents
+        CustomerSupportAPIControllers --> CustomerSupportAPIModels
+        CustomerSupportAPIRepositories --> CustomerSupportAPIModels
+        CustomerSupportAPIRepositories --> CustomerSupportAPIRepository
+    end
+
+    subgraph CustomerSupportService
+        CustomerSupportServiceEvents[Events]
+        EventHandlerWorker[EventHandlerWorker]
+        CustomerSupportServiceModels[Models]
+        CustomerSupportServiceRepositories[Repositories]
+        CustomerSupportServiceProgram[Program.cs]
+        CustomerSupportServiceConfig[Configuration Files]
+        CustomerSupportServiceRepository[(Database)]
+        CustomerSupportServiceProgram --> CustomerSupportServiceRepositories
+        CustomerSupportServiceProgram --> EventHandlerWorker
+        CustomerSupportServiceProgram --> CustomerSupportServiceConfig
+        CustomerSupportServiceRepositories --> CustomerSupportServiceModels
+        EventHandlerWorker --> CustomerSupportServiceEvents
+        EventHandlerWorker --> CustomerSupportServiceModels
+        EventHandlerWorker --> CustomerSupportServiceRepository
+    end
+
+    CustomerSupportAPI --> CustomerSupportService
 
     style RepairManagementAPI fill:#fff,stroke:#333,stroke-width:2px,color:#000000
     style RepairManagementControllers fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
@@ -120,6 +162,7 @@ graph TD
     style RepairManagementConfiguration fill:#f99,stroke:#333,stroke-width:1px,color:#000000
     style RepairManagementProgram fill:#9ff,stroke:#333,stroke-width:1px,color:#000000
     style RepairManagementDatabase fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
+
     style NotificationService fill:#fff,stroke:#333,stroke-width:2px,color:#000000
     style NotificationChannels fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style NotificationServiceEmailNotifier fill:#bfb,stroke:#333,stroke-width:1px,color:#000000
@@ -130,7 +173,24 @@ graph TD
     style NotificationServiceProgram fill:#9ff,stroke:#333,stroke-width:1px,color:#000000
     style NotificationServiceRepository fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
     style NotificationServiceWorker fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
-    
+
+    style CustomerSupportAPI fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style CustomerSupportAPIProgram fill:#9ff,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportAPIConfig fill:#f99,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportAPIRepository fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportAPIRepositories fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportAPIControllers fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportAPIEvents fill:#f9f,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportAPIModels fill:#9bf,stroke:#333,stroke-width:1px,color:#000000
+ 
+    style CustomerSupportService fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style CustomerSupportServiceProgram fill:#9ff,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportServiceConfig fill:#f99,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportServiceRepository fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportServiceRepositories fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportServiceEvents fill:#f9f,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportServiceModels fill:#9bf,stroke:#333,stroke-width:1px,color:#000000
+    style EventHandlerWorker fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
 ```
 
 [//]: # (## Code)
