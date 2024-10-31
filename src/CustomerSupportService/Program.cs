@@ -1,5 +1,3 @@
-using Pitstop.CustomerSupportService.Repositories;
-
 var host = Host
     .CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>

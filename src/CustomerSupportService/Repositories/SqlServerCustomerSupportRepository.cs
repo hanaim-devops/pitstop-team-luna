@@ -13,7 +13,7 @@ public class SqlServerCustomerSupportRepository : ICustomerSupportRepository
 
         Policy
         .Handle<Exception>()
-        .WaitAndRetryAsync(10, r => TimeSpan.FromSeconds(10), (ex, ts) => { Log.Error("Error connecting to DB. Retrying in 10 sec."); })
+        .WaitAndRetryAsync(10, r => TimeSpan.FromSeconds(10), (ex, ts) => { Log.Error(ex, "Error connecting to DB. Retrying in 10 sec"); })
         .ExecuteAsync(InitializeDBAsync)
         .Wait();
     }
