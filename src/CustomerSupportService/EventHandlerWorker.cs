@@ -37,6 +37,8 @@ public class EventHandlerWorker : IHostedService, IMessageHandlerCallback
             {
                 case "RepairOrderRejected":
                     return await HandleAsync(messageObject.ToObject<RepairOrderRejected>());
+                case "MaintenanceJobRejected":
+                    return await HandleAsync(messageObject.ToObject<RepairOrderRejected>());
             }
         }
         catch (Exception ex)
