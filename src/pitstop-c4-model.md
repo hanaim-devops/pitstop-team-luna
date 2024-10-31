@@ -65,17 +65,28 @@ graph TD
 ```mermaid
 graph TD
     subgraph RepairManagementAPI
-        RepairController[Repair Controller]
-        Commands[Command Handlers]
-        DataAccess[Data Access Layer]
-        DTOs[Data Transfer Objects]
-        Events[Event Publishers]
-        Migrations[Database Migrations]
+        Controllers[Controllers]
+        Commands[Commands]
+        DataAccess[DataAccess]
+        DTO[DTO]
+        Events[Events]
+        Migrations[Migrations]
+        Model[Model]
+        Configuration[Configuration Files]
+        Program[Program.cs]
+        Database[(Database)]
+        
+        Program --> Controllers
+        Program --> Commands
+        Program --> Migrations
+        Program --> Configuration
+        Controllers --> Commands
+        Controllers --> Model
+        Controllers --> Events
+        Controllers --> DTO
+        Migrations --> DataAccess
+        DataAccess --> Database
 
-        RepairController --> Commands
-        RepairController --> DataAccess
-        Commands --> Events
-        DataAccess --> Migrations
     end
 
     subgraph NotificationService
@@ -98,7 +109,17 @@ graph TD
         CustomerController --> VehicleServiceClient
     end
 
-    style RepairManagementAPI fill:#ccf,stroke:#333,stroke-width:2px
+    style RepairManagementAPI fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style Controllers fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style Commands fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style DataAccess fill:#bfb,stroke:#333,stroke-width:1px,color:#000000
+    style DTO fill:#fbb,stroke:#333,stroke-width:1px,color:#000000
+    style Events fill:#f9f,stroke:#333,stroke-width:1px,color:#000000
+    style Migrations fill:#ff9,stroke:#333,stroke-width:1px,color:#000000
+    style Model fill:#9bf,stroke:#333,stroke-width:1px,color:#000000
+    style Configuration fill:#f99,stroke:#333,stroke-width:1px,color:#000000
+    style Program fill:#9ff,stroke:#333,stroke-width:1px,color:#000000
+    style Database fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
     style NotificationService fill:#ccf,stroke:#333,stroke-width:2px
     style CustomerManagementAPI fill:#ccf,stroke:#333,stroke-width:2px
 
