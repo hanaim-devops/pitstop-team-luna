@@ -52,15 +52,12 @@ Competenties: *DevOps-1 - Continuous Delivery*, *DevOps-3 GitOps*, *DevOps-5 - S
 
 Competenties: *Nieuwsgierige houding*
 
-```markdown
-Beschrijf hier voor het Course BP kort je onderzochte technologie met een link naar je blog post, of het toepassen ervan gelukt is en hoe, of waarom niet. Beschrijf evt. kort extra leerervaringen met andere technologieen of verdieping sinds het blog. 
+Tijdens de course BP heb ik onderzoek gedaan naar KEDA (Kubernetes Event-Driven Autoscaling), een tool die automatische scaling in Kubernetes mogelijk maakt op basis van externe events, zoals de belasting van message queues. Mijn blogpost, ["KEDA in Actie: Event-Driven Autoscaling voor Microservices binnen DevOps"]([link naar blog](https://github.com/hanaim-devops/devops-blog-oshalabi/tree/main/src/keda-in-actie-event-driven-autoscaling-voor-microservices-binnen-devops)), geeft een overzicht van wat KEDA is, hoe het werkt, en hoe het past binnen een microservices-omgeving zoals Pitstop. Ik heb KEDA succesvol toegepast door het te configureren voor autoscaling in een RabbitMQ-wachtrij. Dit stelde de Pitstop-applicatie in staat om dynamisch te schalen op basis van de werkelijke belasting, waardoor resources efficiënter werden ingezet.
 
-Tijdens het grote project beschrijf je hier onderzoek naar het domein en nieuwe onderzochte/gebruikte DevOps technologieën. Wellicht heb je nogmaals de voor blog onderzochte technologie kunnen toepassen in een andere context. Verder heb je nu een complex domein waar je in moet verdiepen en uitvragen bij de opdrachtgever. Link bijvoorbeeld naar repo's met POC's of, domein modellen of beschrijf andere onderwerpen en link naar gebruikte bronnen.
+Extra leerervaringen omvatten onder andere het werken met TriggerAuthentication en ScaledObject configuraties, wat inzicht gaf in hoe KEDA secure toegang tot externe bronnen kan beheren. Sinds mijn eerste toepassing heb ik ook verder gekeken naar alternatieve scaling-tools, zoals Knative en custom controllers, en onderzocht hoe deze zich verhouden tot KEDA. Dit bood waardevolle kennis voor toekomstige scenario’s waarin andere scaling-benaderingen relevanter kunnen zijn, afhankelijk van het type workload.
 
-Als de tijdens course onderzochte technologie wel toepasbaar is kun je dit uiteraard onder dit punt noemen. Of wellicht was door een teamgenoot onderzochte technologie relevant, waar jij je nu verder in verdiept hebt en mee gewerkt hebt, dus hier kunt beschrijven. Tot slot kun je hier ook juist een korte uitleg geef over WAAROM  jouw eerder onderzochte technologie dan precies niet relevant of inpasbaar was. Dit is voor een naieve buitenstaander niet altijd meteen duidelijk, maar kan ook heel interessant zijn. Bijvoorbeeld dat [gebruik van Ansible in combi met Kubernetes](https://www.ansible.com/blog/how-useful-is-ansible-in-a-cloud-native-kubernetes-environment) niet handig blijkt. Ook als je geen uitgebreid onderzoek hebt gedaan of ADR hebt waar je naar kunt linken, dan kun je onder dit kopje wel alsnog kort conceptuele kennis duidelijk maken.
-```
+Aan gezien we minimaal resours hebben gekregen in onze cluster was het moglijk om keda te testen.
 
-Tijdens het project heb ik onderzoek gedaan naar het gebruik van Prometheus en Alertmanager in combinatie met Kubernetes. Dit heeft geleid tot de implementatie van deze technologieën in ons project, zoals beschreven in mijn bijdragen aan de app configuratie en Kubernetes scripts.
 
 ## 5. Bijdrage code review/kwaliteit anderen en security
 
