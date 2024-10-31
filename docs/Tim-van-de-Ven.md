@@ -1,10 +1,6 @@
 # Eigen bijdrage Tim van de Ven
 
-```markdown
-Je begin hier onder het hoofdkopje met een samenvatting van je bijdrage zoals je die hieronder uitwerkt. Best aan het einde schrijven. Zorg voor een soft landing van de beoordelaar, maar dat deze ook direct een beeld krijgt. Je hoeft geen heel verslag te schrijven. De kopjes kunnen dan wat korter met wat bullet lijst met links voor 2 tot 4 zaken en 1 of 2 inleidende zinnen erboven. Een iets uitgebreidere eind conclusie schrijf je onder het laatste kopje.
-```
-
-...
+In dit document beschrijf ik mijn bijdragen aan het DevOps project. Ik heb me gericht op het opzetten van een CI/CD pipeline, integreren van monitoring tools met Kubernetes, ontwikkelen van een nieuwe MicroService en toevoegen van een CustomerSupport pagina. Ondanks de uitdagingen en problemen die ik ben tegengekomen, heb ik waardevolle ervaring opgedaan op het gebied van tijdsmanagement, proactieve communicatie en het geven van feedback.
 
 ## 1. Code/platform bijdrage
 
@@ -49,13 +45,7 @@ In dit gedeelte bespreek ik mijn bijdrage aan de code review, kwaliteitsverbeter
 
 ## 6. Bijdrage documentatie
 
-Competenties: *DevOps-6 Onderzoek*
-
-```markdown
-Zet hier een links naar en geef beschrijving van je C4 diagram of diagrammen, README of andere markdown bestanden, ADR's of andere documentatie. Bij andere markdown bestanden of doumentatie kun je denken aan eigen proces documentatie, zoals code standaarden, commit- of branchingconventies. Tot slot ook user stories en acceptatiecriteria (hopelijk verwerkt in gitlab issues en vertaalt naar `.feature` files) en evt. noemen en verwijzen naar handmatige test scripts/documenten.
-```
-
-TODO: C4 documentatie bijdragen
+Ik heb actief deelgenomen aan de creatie van het C4-diagram, wat een visueel overzicht biedt van de architectuur van ons project. In het bijzonder heb ik mijn eigen MicroServices, de CustomerSupportAPI en CustomerSupportService, toegevoegd aan het diagram. Dit helpt andere teamleden en belanghebbenden om een beter inzicht te krijgen in de structuur en werking van deze services binnen het grotere geheel. Bekijk de betreffende [commit](https://github.com/hanaim-devops/pitstop-team-luna/pull/50/commits/e19e38e72019b7b03dcba642866dd584d354fd08) voor meer informatie.
 
 ## 7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
 
@@ -82,10 +72,6 @@ Tops:
 
 ## 9. Conclusie & feedback
 
-Competenties: *DevOps-7 - Attitude*
+Gedurende het project heb ik bijgedragen aan verschillende aspecten, zoals het opzetten van een CI/CD pipeline, het integreren van monitoring tools in het Kubernetes platform, het ontwikkelen van een nieuwe MicroService en het toevoegen van een CustomerSupport pagina. Ik heb ook een actieve rol gespeeld in het reviewen van de code van mijn collega's en het geven van constructieve feedback op hun werk. Daarnaast heb ik deelgenomen aan Scrum ceremonies en bijgedragen aan het groepsproces en de communicatie met de opdrachtgever.
 
-```markdown
-Schrijf een conclusie van al bovenstaande punten. En beschrijf dan ook wat algemener hoe je terugkijkt op het project. Geef wat constructieve feedback, tips aan docenten/beoordelaars e.d. En beschrijf wat je aan devops kennis, vaardigheden of andere zaken meeneemt naar je afstudeeropdracht of verdere loopbaan.
-```
-
-...
+Terugkijkend op het project, ben ik in korte tijd tegen veel problemen aangelopen waardoor er minder is gelukt dan gehoopt. Desondanks heb ik veel geleerd en waardevolle ervaring opgedaan op het gebied van tijdsmanagement, proactieve communicatie en het geven van feedback. Deze ervaringen zullen me helpen in mijn verdere loopbaan en bij mijn afstudeeropdracht. Ik zal blijven streven naar het verbeteren van mijn professionele vaardigheden en het toepassen van de geleerde lessen in toekomstige projecten en samenwerkingen.
