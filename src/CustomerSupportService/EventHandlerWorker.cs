@@ -1,28 +1,17 @@
-﻿using Newtonsoft.Json.Linq;
-using Pitstop.CustomerSupportAPI.Events;
-using Pitstop.CustomerSupportAPI.Models;
+﻿using Pitstop.CustomerSupportService.Events;
+using Pitstop.CustomerSupportService.Repositories;
 
-namespace Pitstop.CustomerSupportAPI;
+namespace Pitstop.CustomerSupportService;
 
 public class EventHandlerWorker : IHostedService, IMessageHandlerCallback
 {
-    private readonly CustomerSupportContext _context;
+    private readonly ICustomerSupportRepository _repo;
     private readonly IMessageHandler _messageHandler;
 
-    public EventHandlerWorker(IMessageHandler messageHandler, CustomerSupportContext context)
+    public EventHandlerWorker(IMessageHandler messageHandler, ICustomerSupportRepository repo)
     {
         _messageHandler = messageHandler;
-        _context = context;
-    }
-
-    public void Start()
-    {
-        _messageHandler.Start(this);
-    }
-
-    public void Stop()
-    {
-        _messageHandler.Stop();
+        _repo = repo;
     }
 
     public Task StartAsync(CancellationToken cancellationToken)
@@ -48,6 +37,8 @@ public class EventHandlerWorker : IHostedService, IMessageHandlerCallback
             {
                 case "RepairOrderRejected":
                     return await HandleAsync(messageObject.ToObject<RepairOrderRejected>());
+                case "MaintenanceJobRejected":
+                    return await HandleAsync(messageObject.ToObject<RepairOrderRejected>());
             }
         }
         catch (Exception ex)
@@ -59,26 +50,19 @@ public class EventHandlerWorker : IHostedService, IMessageHandlerCallback
         // always acknowledge message - any errors need to be dealt with locally.
         return true;
     }
-
+    
     private async Task<bool> HandleAsync(RepairOrderRejected @event)
     {
         Log.Information("Register Repair Order Rejection: {RejectOrderId}, {RejectedAt}, {RejectReason}",
             @event.RepairOrderId, @event.RejectedAt, @event.RejectReason);
+    
+        var rejection = new Rejection(@event.RepairOrderId, @event.RejectReason, @event.RejectedAt);
 
-        try
-        {
-            await _context.Rejections.AddAsync(new Rejection(
-                @event.RepairOrderId,
-                @event.RejectReason,
-                @event.RejectedAt
-            ));
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateException)
-        {
-            Console.WriteLine($"Skipped adding rejection with id: {@event.RepairOrderId}.");
-        }
+        Log.Information("Register rejection: {RepairOrderId}, {RejectReason}, {RejectedAt}",
+            rejection.RepairOrderId, rejection.RejectReason, rejection.RejectedAt);
 
+        await _repo.RegisterRejectionAsync(rejection);
+    
         return true;
     }
 }
