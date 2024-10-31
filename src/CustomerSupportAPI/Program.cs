@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using Pitstop.CustomerSupportAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +8,9 @@ builder.Host.UseSerilog((context, loggerConfiguration) =>
         .Enrich.WithMachineName()
 );
 
-// add messagehandler
-builder.Services.UseRabbitMQMessageHandler(builder.Configuration);
-
-builder.Services.AddHostedService<EventHandlerWorker>();
+// add repo
+var sqlConnectionString = builder.Configuration.GetConnectionString("CustomerSupportCN");
+builder.Services.AddTransient<ICustomerSupportDataRepository>(_ => new CustomerSupportDataRepository(sqlConnectionString));
 
 // Add framework services
 builder.Services
@@ -30,15 +28,6 @@ builder.Services.AddControllers()
     {
         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
     });
-
-// add DBContext
-var sqlConnectionString = builder.Configuration.GetConnectionString("CustomerSupportCN");
-builder.Services.AddDbContext<CustomerSupportContext>(options => options.UseSqlServer(sqlConnectionString));
-
-
-// Add health checks
-builder.Services.AddHealthChecks()
-    .AddDbContextCheck<CustomerSupportContext>();
  
 // setup MVC
 builder.Services.AddControllers();
@@ -49,6 +38,10 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseMvc();
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 // Enable middleware to serve generated Swagger as a JSON endpoint.
 app.UseSwagger();
 
@@ -56,12 +49,6 @@ app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "CustomerSupport API - v1");
 });
-
-// auto migrate db
-using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
-{
-    scope.ServiceProvider.GetService<CustomerSupportContext>().MigrateDB();
-}
 
 app.UseHealthChecks("/hc");
 

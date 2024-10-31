@@ -37,6 +37,7 @@ fi
 
 kubectl apply \
     -f ../pitstop-namespace$MESHPOSTFIX.yaml \
+    -f ../rabbitmq-trigger-auth.yaml \
     -f ../rabbitmq.yaml \
     -f ../logserver.yaml \
     -f ../sqlserver$MESHPOSTFIX.yaml \
@@ -51,11 +52,12 @@ kubectl apply \
     -f ../vehiclemanagementapi$MESHPOSTFIX.yaml \
     -f ../workshopmanagementapi$MESHPOSTFIX.yaml \
     -f ../customersupportapi.yaml \
-    -f ../webapp$MESHPOSTFIX.yaml \
+    -f ../customersupportservice.yaml \
+    -f ../webapp$meshPostfix.yaml \
     -f ../sonarqube/sonar-namespace.yaml \
     -f ../sonarqube/storage-classes.yaml \
     -f ../sonarqube/postgres-pv.yaml \
     -f ../sonarqube/sonarqube-pv.yaml \
     -f ../sonarqube/app-deployment.yaml \
     -f ../sonarqube/db-deployment.yaml \
-    -f ../sonarqube/ingress-deployment.yaml \
+    -f ../sonarqube/ingress-deployment.yaml

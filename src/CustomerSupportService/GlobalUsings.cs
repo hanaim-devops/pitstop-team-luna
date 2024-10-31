@@ -1,0 +1,14 @@
+global using Pitstop.CustomerSupportService;
+global using Pitstop.Infrastructure.Messaging;
+global using Pitstop.Infrastructure.Messaging.Configuration;
+global using Pitstop.CustomerSupportService.Events;
+global using Pitstop.CustomerSupportService.Models;
+global using Pitstop.CustomerSupportService.Repositories;
+global using Microsoft.Extensions.Hosting;
+global using Newtonsoft.Json.Linq;
+global using Serilog;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Dapper;
+global using Polly;
+global using System.Data.SqlClient;
