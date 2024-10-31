@@ -14,7 +14,7 @@ COPY ./Policies ./
 COPY ./groep5.yaml ./
 
 # Set the KUBECONFIG environment variable to the path of the kubeconfig file
-ENV KUBECONFIG=./groep5.yaml
+ENV KUBECONFIG=src/groep5.yaml
 
 # Run the policy with Cloud Custodian
 CMD ["custodian", "run", "-s", "out", "policy.yml"]
