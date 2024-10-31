@@ -6,7 +6,7 @@ namespace Pitstop.CustomerSupportAPI.Repositories;
 
 public class CustomerSupportDataRepository : ICustomerSupportDataRepository
 {
-    private string _connectionString;
+    private readonly string _connectionString;
     
     public CustomerSupportDataRepository(string connectionString)
     {
@@ -15,23 +15,21 @@ public class CustomerSupportDataRepository : ICustomerSupportDataRepository
     
     public async Task<IEnumerable<Rejection>> GetRejectionsAsync()
     {
-        var rejections = new List<Rejection>();
         await using var conn = new SqlConnection(_connectionString);
         try
         {
-            var rejectionSelection = (await conn.QueryAsync<Rejection>("select * from Rejection")).ToList();
+            var result = (await conn.QueryAsync<Rejection>("select * from Rejection")).ToArray();
 
-            if (rejectionSelection.Count != 0)
-            {
-                rejections.AddRange(rejectionSelection);
-            }
+            return result.Length == 0 
+                ? [new Rejection(Guid.NewGuid(), "Test", DateTime.Now)] 
+                : result;
         }
         catch (SqlException ex)
         {
             HandleSqlException(ex);
         }
-
-        return rejections;
+        
+        return Array.Empty<Rejection>();
     }
     
     private static void HandleSqlException(SqlException ex)
