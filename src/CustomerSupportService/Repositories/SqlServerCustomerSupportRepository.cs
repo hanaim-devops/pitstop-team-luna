@@ -28,7 +28,7 @@ public class SqlServerCustomerSupportRepository : ICustomerSupportRepository
 
     private async Task InitializeDBAsync()
     {
-        await using (var conn = new SqlConnection(_connectionString.Replace("Notification", "master")))
+        await using (var conn = new SqlConnection(_connectionString.Replace("CustomerSupport", "master")))
         {
             await conn.OpenAsync();
 
