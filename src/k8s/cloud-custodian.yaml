@@ -28,3 +28,22 @@ spec:
       restartPolicy: Always
       imagePullSecrets:
         - name: ghcr-secret
+          
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cloud-custodian
+  name: cloud-custodian
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+    - name: "http-5999"
+      port: 5999
+      targetPort: 6001
+      nodePort: 30027
+  selector:
+    app: customersupportapi
