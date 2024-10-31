@@ -6,6 +6,8 @@ public class Rejection
     public readonly DateTime RejectedAt;
     public readonly string RejectReason;
     
+    public Rejection() { }
+    
     public Rejection(Guid repairOrderId, string rejectReason, DateTime rejectedAt)
     {
         RepairOrderId = repairOrderId;
