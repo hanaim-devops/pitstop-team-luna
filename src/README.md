@@ -96,7 +96,7 @@ graph TD
         NotificationServiceModel[Model]
         NotificationServiceTemplates[Slack Templates]
         NotificationServiceProgram[Program.cs]
-        NotificationServiceWorker[Program.cs]
+        NotificationServiceWorker[NotificationService Worker]
         NotificationServiceRepository[(Database)]
         NotificationServiceProgram-->NotificationServiceWorker
         NotificationServiceWorker --> NotificationChannels
