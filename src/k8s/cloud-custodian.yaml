@@ -1,18 +1,30 @@
-﻿apiVersion: v1
-kind: Pod
+﻿apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: cloud-custodian
   labels:
     app: cloud-custodian
+    version: "1.0"
+  name: cloud-custodian
+  namespace: pitstop
 spec:
-  containers:
-    - name: cloud-custodian
-      image: ghcr.io/hanaim-devops/pitstop-team-luna/cloudcustodian:1.0
-      volumeMounts:
-        - name: policy-volume
-          mountPath: /usr/src/app/Policies
-  volumes:
-    - name: policy-volume
-      hostPath:
-        path: ./Policies
-        type: Directory
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-custodian
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        app: cloud-custodian
+        version: "1.0"
+    spec:
+      containers:
+        - env:
+            - name: DOTNET_ENVIRONMENT
+              value: Production
+          image: ghcr.io/hanaim-devops/pitstop-team-luna/cloudcustodian:1.0
+          imagePullPolicy: IfNotPresent
+          name: auditlogservice
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: ghcr-secret
