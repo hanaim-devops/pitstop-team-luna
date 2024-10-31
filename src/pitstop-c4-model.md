@@ -10,11 +10,10 @@
 
 ```mermaid
 graph TD
-    style Manager fill:#ffffff,stroke:#333,stroke-width:2px,color:#000000
-    style Monteur fill:#ffffff,stroke:#333,stroke-width:2px,color:#000000
-    style PitStop fill:#ffffff,stroke:#333,stroke-width:2px,color:#000000
-    style Externe_APIs fill:#ffffff,stroke:#333,stroke-width:2px,color:#000000
-
+    style Manager fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style Monteur fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style PitStop fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style Externe_APIs fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     Manager -->|Beheert klant- en voertuiggegevens| PitStop
     Monteur -->|Werkt aan toegewezen taken| PitStop
     PitStop -->|Interageert met externe systemen| Externe_APIs
@@ -65,64 +64,73 @@ graph TD
 ```mermaid
 graph TD
     subgraph RepairManagementAPI
-        Controllers[Controllers]
-        Commands[Commands]
-        DataAccess[DataAccess]
-        DTO[DTO]
-        Events[Events]
-        Migrations[Migrations]
-        Model[Model]
-        Configuration[Configuration Files]
-        Program[Program.cs]
-        Database[(Database)]
-        
-        Program --> Controllers
-        Program --> Commands
-        Program --> Migrations
-        Program --> Configuration
-        Controllers --> Commands
-        Controllers --> Model
-        Controllers --> Events
-        Controllers --> DTO
-        Migrations --> DataAccess
-        DataAccess --> Database
+        RepairManagementControllers[Controllers]
+        RepairManagementCommands[Commands]
+        RepairManagementDataAccess[DataAccess]
+        RepairManagementDTO[DTO]
+        RepairManagementEvents[Events]
+        RepairManagementMigrations[Migrations]
+        RepairManagementModel[Model]
+        RepairManagementConfiguration[Configuration Files]
+        RepairManagementProgram[Program.cs]
+        RepairManagementDatabase[(Database)]
+
+        RepairManagementProgram --> RepairManagement
+        RepairManagementProgram --> RepairManagementMigrations
+        RepairManagementProgram --> RepairManagementConfiguration
+        RepairManagementControllers --> RepairManagementCommands
+        RepairManagementControllers --> RepairManagementEvents
+        RepairManagementControllers --> RepairManagementDTO
+        RepairManagementControllers --> RepairManagementModel
+        RepairManagementMigrations --> RepairManagementModel
+        RepairManagementMigrations --> RepairManagementDataAccess
+        RepairManagementDataAccess --> RepairManagementDatabase
 
     end
 
     subgraph NotificationService
-        NotificationController[Notification Controller]
-        SMSGateway[SMS Gateway]
-        EmailGateway[Email Gateway]
-        TemplateEngine[Template Engine]
-
-        NotificationController --> SMSGateway
-        NotificationController --> EmailGateway
-        NotificationController --> TemplateEngine
+        NotificationChannels[Notification Channels]
+        NotificationServiceEmailNotifier[Email Notifier]
+        NotificationServiceSlackMessenger[Slack Messenger]
+        NotificationServiceEvents[Events]
+        NotificationServiceModel[Model]
+        NotificationServiceTemplates[Slack Templates]
+        NotificationServiceProgram[Program.cs]
+        NotificationServiceWorker[Program.cs]
+        NotificationServiceRepository[(Database)]
+        NotificationServiceProgram-->NotificationServiceWorker
+        NotificationServiceWorker --> NotificationChannels
+        NotificationServiceWorker --> NotificationServiceEvents
+        NotificationServiceWorker --> NotificationServiceModel
+        NotificationServiceWorker --> NotificationServiceRepository
+        NotificationChannels --> NotificationServiceEmailNotifier
+        NotificationChannels --> NotificationServiceSlackMessenger
+        NotificationServiceSlackMessenger --> NotificationServiceTemplates
     end
 
-    subgraph CustomerManagementAPI
-        CustomerController[Customer Controller]
-        CustomerRepository[Customer Repository]
-        VehicleServiceClient[Vehicle Service Client]
-        
-        CustomerController --> CustomerRepository
-        CustomerController --> VehicleServiceClient
-    end
 
     style RepairManagementAPI fill:#fff,stroke:#333,stroke-width:2px,color:#000000
-    style Controllers fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
-    style Commands fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
-    style DataAccess fill:#bfb,stroke:#333,stroke-width:1px,color:#000000
-    style DTO fill:#fbb,stroke:#333,stroke-width:1px,color:#000000
-    style Events fill:#f9f,stroke:#333,stroke-width:1px,color:#000000
-    style Migrations fill:#ff9,stroke:#333,stroke-width:1px,color:#000000
-    style Model fill:#9bf,stroke:#333,stroke-width:1px,color:#000000
-    style Configuration fill:#f99,stroke:#333,stroke-width:1px,color:#000000
-    style Program fill:#9ff,stroke:#333,stroke-width:1px,color:#000000
-    style Database fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
-    style NotificationService fill:#ccf,stroke:#333,stroke-width:2px
-    style CustomerManagementAPI fill:#ccf,stroke:#333,stroke-width:2px
-
+    style RepairManagementControllers fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementCommands fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementDataAccess fill:#bfb,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementDTO fill:#fbb,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementEvents fill:#f9f,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementMigrations fill:#ff9,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementModel fill:#9bf,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementConfiguration fill:#f99,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementProgram fill:#9ff,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementDatabase fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
+    style NotificationService fill:#fff,stroke:#333,stroke-width:2px,color:#000000
+    style NotificationChannels fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style NotificationServiceEmailNotifier fill:#bfb,stroke:#333,stroke-width:1px,color:#000000
+    style NotificationServiceSlackMessenger fill:#fbb,stroke:#333,stroke-width:1px,color:#000000
+    style NotificationServiceEvents fill:#f9f,stroke:#333,stroke-width:1px,color:#000000
+    style NotificationServiceModel fill:#9bf,stroke:#333,stroke-width:1px,color:#000000
+    style NotificationServiceTemplates fill:#ff9,stroke:#333,stroke-width:1px,color:#000000
+    style NotificationServiceProgram fill:#9ff,stroke:#333,stroke-width:1px,color:#000000
+    style NotificationServiceRepository fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
+    style NotificationServiceWorker fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    
 ```
 
 [//]: # (## Code)
