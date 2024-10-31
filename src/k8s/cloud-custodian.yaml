@@ -24,7 +24,7 @@ spec:
               value: Production
           image: ghcr.io/hanaim-devops/pitstop-team-luna/cloudcustodian:1.0
           imagePullPolicy: IfNotPresent
-          name: auditlogservice
+          name: cloud-custodian
       restartPolicy: Always
       imagePullSecrets:
         - name: ghcr-secret
