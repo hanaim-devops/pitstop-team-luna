@@ -23,6 +23,9 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomerSupport API", Version = "v1" });
 });
 
+// Add health checks
+builder.Services.AddHealthChecks().AddSqlServer(sqlConnectionString!, name: "CustomerSupportStoreHC");
+
 builder.Services.AddControllers()
     .AddNewtonsoftJson(options =>
     {
