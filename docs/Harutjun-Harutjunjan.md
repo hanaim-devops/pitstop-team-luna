@@ -36,15 +36,33 @@ Daarnaast heb ik geprobeerd om Jaeger toe te passen voor monitoring, waarbij ik 
 
 ## 4. Onderzoek
 
-IK GA HIER BESCHRIJVEN WAAROM HET NIET IS GELUKT
-
 Competenties: *Nieuwsgierige houding*
 
-Beschrijf hier voor het Course BP kort je onderzochte technologie met een link naar je blog post, of het toepassen ervan gelukt is en hoe, of waarom niet. Beschrijf evt. kort extra leerervaringen met andere technologieen of verdieping sinds het blog.
+Tijdens mijn onderzoek naar Jaeger heb ik het werkend gekregen om de tool te integreren in een testproject. Dit hielp me de functionaliteit van Jaeger te verkennen en de mogelijkheden voor het monitoren van prestaties te begrijpen.
 
-Tijdens het grote project beschrijf je hier onderzoek naar het domein en nieuwe onderzochte/gebruikte DevOps technologieën. Wellicht heb je nogmaals de voor blog onderzochte technologie kunnen toepassen in een andere context. Verder heb je nu een complex domein waar je in moet verdiepen en uitvragen bij de opdrachtgever. Link bijvoorbeeld naar repo's met POC's of, domein modellen of beschrijf andere onderwerpen en link naar gebruikte bronnen.
+Echter, bij de integratie van Jaeger in een groter project stuitte ik op verschillende technische uitdagingen. Een grote hinderpaal was de "exec format error" die optrad bij het starten van de SQL Server-image. Dit probleem deed zich voor terwijl ik dezelfde architectuur (64-bit) had als mijn teamgenoten, bij wie de image probleemloos functioneerde. Dit maakte het frustrerender, aangezien ik de enige was die deze specifieke foutmelding kreeg.
 
-Als de tijdens course onderzochte technologie wel toepasbaar is kun je dit uiteraard onder dit punt noemen. Of wellicht was door een teamgenoot onderzochte technologie relevant, waar jij je nu verder in verdiept hebt en mee gewerkt hebt, dus hier kunt beschrijven. Tot slot kun je hier ook juist een korte uitleg geef over WAAROM  jouw eerder onderzochte technologie dan precies niet relevant of inpasbaar was. Dit is voor een naieve buitenstaander niet altijd meteen duidelijk, maar kan ook heel interessant zijn. Bijvoorbeeld dat [gebruik van Ansible in combi met Kubernetes](https://www.ansible.com/blog/how-useful-is-ansible-in-a-cloud-native-kubernetes-environment) niet handig blijkt. Ook als je geen uitgebreid onderzoek hebt gedaan of ADR hebt waar je naar kunt linken, dan kun je onder dit kopje wel alsnog kort conceptuele kennis duidelijk maken.
+### Gedetailleerde Foutanalyse
+
+De "exec format error" geeft meestal aan dat de geprobeerde uitvoerbare bestanden [niet compatibel zijn met het systeem waarop ze draaien](https://stackoverflow.com/questions/73285601/docker-exec-usr-bin-sh-exec-format-error). Ondanks dat ik de Docker-image opnieuw downloadde, de configuratie controleerde, en verschillende versies van de image probeerde, bleef het probleem aanhouden.
+
+Daarnaast kreeg ik regelmatig te maken met WSL-fouten, wat leidde tot de noodzaak om WSL opnieuw te configureren. Dit vereiste meerdere herstarts van mijn laptop en kostte veel tijd, wat mijn voortgang verder vertraagde.
+
+### Onderzoeks- en Probleemoplossingsinspanningen
+
+Om de problemen aan te pakken, heb ik verschillende stappen ondernomen:
+
+1. **Controle van de Architectuur**: Ik vergeleek de architectuur van mijn systeem met die van de Docker-images, maar dit leidde niet tot een oplossing.
+
+2. **Herinstalleren van Docker Images**: Ik downloadde de SQL Server-image opnieuw, maar dat hielp niet.
+
+3. **Bestandspermissies Controleren**: Ik inspecteerde de bestandspermissies van de scripts in de container, maar dit leverde geen bevredigende resultaten op.
+
+4. **Debugging in de Container**: Ik opende een shell-sessie in de container om handmatig enkele commando's uit te voeren, maar ook deze poging leidde niet tot een oplossing.
+
+5. **Documentatie en Hulpbronnen**: Ik documenteerde mijn stappen en de fouten die ik tegenkwam in een Git-issue om een duidelijk reproductiepad te creëren.
+
+Ondanks mijn inspanningen lukte het me niet om Jaeger succesvol te integreren in het project. Door dit proces heb ik geleerd hoe belangrijk het is om de root cause van een probleem grondig te onderzoeken en te documenteren. Hoewel ik Jaeger niet heb kunnen implementeren zoals gepland, heeft deze ervaring mijn begrip van de complexiteit van DevOps-technologieën verdiept.
 
 ## 5. Bijdrage code review/kwaliteit anderen en security
 
