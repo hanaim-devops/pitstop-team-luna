@@ -19,14 +19,14 @@ spec:
         version: "1.0"
     spec:
       containers:
-      - env:
-        - name: ASPNETCORE_ENVIRONMENT
-          value: Production
-        image: ghcr.io/hanaim-devops/pitstop-team-luna/webapp:1.0
-        imagePullPolicy: IfNotPresent
-        name: webapp
-        ports:
-        - containerPort: 80
+        - env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Production
+          image: ghcr.io/hanaim-devops/pitstop-team-luna/webapp:1.0
+          imagePullPolicy: IfNotPresent
+          name: webapp
+          ports:
+            - containerPort: 7005
       restartPolicy: Always
       imagePullSecrets:
         - name: ghcr-secret
@@ -41,11 +41,10 @@ metadata:
   name: webapp
   namespace: pitstop
 spec:
-  type: LoadBalancer
+  type: LoadBalancer  # Changed to LoadBalancer
   ports:
-  - name: "80"
-    port: 80
-    targetPort: 7005
+    - name: "7005"
+      port: 7005
+      targetPort: 7005
   selector:
     app: webapp
-
