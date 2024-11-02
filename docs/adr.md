@@ -19,7 +19,7 @@ In dit document worden de architectuur-significante beslissingen en bijbehorende
 | Current status    | 🟥 **DISCARDED**                                                                |
 | Problem/Issue     | In complexe architecturen die gebruik maken van microservices is het lastig om het verloop van requests over meerdere services te volgen, bottlenecks te identificeren en prestatieproblemen op te lossen. Zonder een systeem voor distributed tracing kan het debuggen en optimaliseren van prestaties tijdrovend en foutgevoelig zijn. Ons doel is om een oplossing te implementeren die end-to-end zicht biedt op service-interacties, zodat we latentie kunnen optimaliseren en problemen snel kunnen opsporen.                                                               |
 | Decision          | Jaeger                                                                 |
-| Alternatives      | 1. **SigNoz**: Open-source observatieplatform voor metrics en tracing. Het biedt een gebruiksvriendelijke interface en lokaal gegevensbeheer, maar heeft mogelijk minder geavanceerde tracing-mogelijkheden dan Jaeger. 2. **Honeycomb**: Krachtig platform voor uitgebreide tracing, geschikt voor complexe systemen. Ondersteunt hoge gegevensvolumes en sterke query-mogelijkheden, maar kan duur zijn. 3. **Tempo by Grafana**: Tracing-backend die integreert met Grafana. Efficiënt voor grootschalige data zonder database, maar beperkt in visualisatiemogelijkheden zonder andere Grafana-tools. Zie de blogpost van Harutjun Harutjunjan voor beredenering voor deze alternatieven. |
+| Alternatives      | 1. **SigNoz**: Open-source observatieplatform voor metrics en tracing. Het biedt een gebruiksvriendelijke interface en lokaal gegevensbeheer, maar heeft mogelijk minder geavanceerde tracing-mogelijkheden dan Jaeger. <br> 2. **Honeycomb**: Krachtig platform voor uitgebreide tracing, geschikt voor complexe systemen. Ondersteunt hoge gegevensvolumes en sterke query-mogelijkheden, maar kan duur zijn. <br> 3. **Tempo by Grafana**: Tracing-backend die integreert met Grafana. Efficiënt voor grootschalige data zonder database, maar beperkt in visualisatiemogelijkheden zonder andere Grafana-tools. Zie de blogpost van Harutjun Harutjunjan voor beredenering voor deze alternatieven. |
 | Arguments         |   Jaeger is gekozen vanwege zijn unieke voordelen ten opzichte van andere tracing-tools. Ten eerste is het volledig open-source en gratis, wat het aantrekkelijk maakt voor teams die kosten willen beheersen, in tegenstelling tot commerciële alternatieven zoals Honeycomb. Jaeger biedt bovendien uitgebreide tracing-functionaliteiten en een krachtige integratie met microservices, wat het meer geschikt maakt voor complexe cloud-native omgevingen dan tools zoals SigNoz. De visuele interface van Jaeger maakt het eenvoudiger om bottlenecks en prestaties te analyseren, iets wat mogelijk beperkter is bij Tempo. Bovendien is Jaeger schaalbaar en kan het goed omgaan met een toenemend aantal microservices en aanvragen, wat essentieel is in een dynamische DevOps-context. Zie voor een meer gedetailleerd overzicht de blogpost van Harutjun Harutjunjan. |
 | History | De history van de gemaakte keuze hieronder. Zie de reden voor de gemaakte keuze de [Individuele bijdrage van Harutjun](/docs/Harutjun-Harutjunjan.md) |
 
@@ -29,7 +29,7 @@ In dit document worden de architectuur-significante beslissingen en bijbehorende
 
 ## ARD2: Gebruik van KEDA voor Autoscaling
 
-| Name              | Tracing                                                   |
+| Name              | KEDA voor Autoscaling                                                   |
 |-------------------|-----------------------------------------------------------|
 | Current version   | 1                                                         |
 | Current status    | 🟩 **DECIDED**                                            |
@@ -56,3 +56,18 @@ In dit document worden de architectuur-significante beslissingen en bijbehorende
 | **Stakeholder**  | **Action**           | **Status**        | **Date**        |
 |------------------|----------------------|-------------------|-----------------|
 | Tim van de Ven   | Decision             | 🟩 **DECIDED**    | 26-10-2024      |
+
+## ADR 4: Gebruik van KEDA voor Design for Failure
+
+| Name              | KEDA voor Design for Failure                                                   |
+|-------------------|-----------------------------------------------------------|
+| Current version   | 1                                                         |
+| Current status    | 🟩 **DECIDED**                                           |
+| Problem/Issue     |        Voor een fouttolerante en hoog beschikbare infrastructuur moeten applicaties automatisch kunnen reageren op wisselende belasting en onverwachte uitval van services of hardware. Zonder een systeem voor adaptieve schaalbaarheid riskeren we vertragingen, downtime en een negatieve impact op de gebruikerservaring bij onverwachte pieken of storingen. Dit belemmert onze doelstelling om "Design for Failure" te realiseren, waarbij eindgebruikers geen merkbare hinder ondervinden bij uitval van onderdelen.                                                   |
+| Decision          | KEDA                                                          |
+| Alternatives      | 1. **HPA(Horizontal Pod Autoscaler)**: Een Kubernetes-tool die pods automatisch schaalt op basis van CPU- en geheugengebruik. <br> 2. **Cluster Autoscaler**: Een autoscaler die het aantal nodes in een Kubernetes-cluster aanpast op basis van de resourcebehoeften van pods. <br> 3. **Knative Serving**: Een platform voor het automatisch schalen van serverless applicaties en microservices op basis van inkomend verkeer. |
+| Arguments         | KEDA is gekozen vanwege zijn veelzijdige, event-driven autoscaling-mogelijkheden, die verder gaan dan de CPU- en geheugengebaseerde aanpak van HPA. Dit maakt het mogelijk om applicaties schaalbaar te maken op basis van diverse events, zoals berichten in wachtrijen of wijzigingen in databases, wat essentieel is voor fouttolerantie binnen "Design for Failure". In tegenstelling tot de Cluster Autoscaler, die zich richt op nodes, biedt KEDA applicatiespecifieke schaalbaarheid die direct kan inspelen op belasting- en faalpatronen zonder ingrijpende infrastructuuraanpassingen. Ook heeft KEDA, anders dan Knative Serving, geen beperkingen tot alleen serverless toepassingen en HTTP-verkeer, wat zorgt voor een bredere inzetbaarheid in een microservices-architectuur. Door de sterke integratie met Kubernetes en de ondersteuning voor een breed scala aan scalers is KEDA zowel flexibel als robuust voor uiteenlopende DevOps-omgevingen.                                                       |
+
+| **Stakeholder**  | **Action**           | **Status**        | **Date**        |
+|------------------|----------------------|-------------------|-----------------|
+| Osama Halabi     | Decision             | 🟩 **DECIDED**    | 26-10-2024      |
