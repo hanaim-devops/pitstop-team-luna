@@ -42,10 +42,13 @@ In dit gedeelte bespreek ik mijn bijdrage aan de code review, kwaliteitsverbeter
 1. Ik heb de [PullRequest](https://github.com/hanaim-devops/pitstop-team-luna/pull/38) van Hugo gereviewed, waarin hij Slack Notifications heeft geïmplementeerd. Tijdens de review heb ik een kleine security issue opgemerkt.
 2. Ik heb de [PullRequest](https://github.com/hanaim-devops/pitstop-team-luna/pull/46) van Harutjun gereviewed, waarin hij zijn functionele taak heeft geïmplementeerd. Tijdens de review zijn er redelijk wat Code Style issues aan het licht gekomen, en ik heb enkele vragen over de keuzes die hij heeft gemaakt.
 3. Ik heb de [PullRequest](https://github.com/hanaim-devops/pitstop-team-luna/pull/44) van Osama gereviewed, waarin hij zijn onderzoeksproject van Keda samenvoegt. Tijdens de review heb ik opgemerkt dat hij vergeten was om de bestaande Kubernetes scripts in het project te updaten met zijn nieuwe Kubernetes bestanden.
+4. Ik heb in een [Commit](https://github.com/hanaim-devops/pitstop-team-luna/commit/5905f4306b56b9627d65c2f57a552ca95a547f39) een Slack Webhook URL toegevoegd als een GitHub Secret om de veiligheid ervan te waarborgen.
 
 ## 6. Bijdrage documentatie
 
 Ik heb actief deelgenomen aan de creatie van het C4-diagram, wat een visueel overzicht biedt van de architectuur van ons project. In het bijzonder heb ik mijn eigen MicroServices, de CustomerSupportAPI en CustomerSupportService, toegevoegd aan het diagram. Dit helpt andere teamleden en belanghebbenden om een beter inzicht te krijgen in de structuur en werking van deze services binnen het grotere geheel. Bekijk de betreffende [commit](https://github.com/hanaim-devops/pitstop-team-luna/pull/50/commits/e19e38e72019b7b03dcba642866dd584d354fd08) voor meer informatie.
+
+Daarnaast heb ik een ADR geschreven waarin ik de beslissing en implementatie van Prometheus Alertmanager heb gedocumenteerd. Zie de betreffende [commit](https://github.com/hanaim-devops/pitstop-team-luna/commit/7cedee84c1d074211be338810519e16a4e7c4d5b) voor meer informatie over de ADR.
 
 ## 7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
 
