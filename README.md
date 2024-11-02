@@ -70,7 +70,7 @@ Dit uitgebreide notificatiesysteem vermindert de wachttijden doordat klanten sne
   * **TV-001 Automatische unit tests**: De [pipeline](../pitstop-team-luna/.github/workflows/pipeline.yaml) is geconfigureerd om alle unit tests automatisch uit te voeren (Build & Test).
   * **TV-002 Aparte testomgeving**: Zie WorkshopManagementAPI.UnitTests en UITests.
 
-* 📈 **Information & Reporting: 6.5** 🦆
-  * **IR-201 Gedeeld informatiemodel**: Zie [README.md](src/README.md) in de src-directory; daar staat een C4-model.
+* 📈 **Information & Reporting: 6.5** 🦆s
+  * **IR-201 Gedeeld informatiemodel**: Zie [README.md](src/README.md) in de src-directory; daar staat een C4-model, ook zijn er verschillende ADR's beschikbaar, zie [ADR.md](docs/adr.md).
   * **IR-203 Rapportagehistorie is beschikbaar**: Alles wordt bijgehouden door de gebruikte tool, namelijk GitHub, van het creëren van branches tot het maken van taken en het voltooien van taken.
   * **IR-302 Dynamische testcoverage-analyse**: Dit wordt gedaan door SonarQube.

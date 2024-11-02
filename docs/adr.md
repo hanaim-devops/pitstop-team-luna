@@ -27,7 +27,6 @@ In dit document worden de architectuur-significante beslissingen en bijbehorende
 |-----------------|---------------------|-------------------|------------------|
 | H.Harutjunjan   | Decision             | 🟥 **DISCARDED**          | 31-10-2024|
 
-
 ## ARD2: Gebruik van KEDA voor Autoscaling
 
 | Name              | Tracing                                                   |
@@ -43,3 +42,17 @@ In dit document worden de architectuur-significante beslissingen en bijbehorende
 |------------------|----------------------|-------------------|-----------------|
 | Osama Halabi     | Decision             | 🟩 **DECIDED**    | 26-10-2024      |
 
+## ADR 3: Implementatie van Prometheus en Alertmanager voor Monitoring en Alerting
+
+| Name              | Implementatie van Prometheus en Alertmanager voor Monitoring en Alerting |
+|-------------------|-----------------------------------------------------------|
+| Current version   | 1                                                         |
+| Current status    | 🟩 **DECIDED**                                            |
+| Problem/Issue     | Er is momenteel geen monitoring- en waarschuwingssysteem aanwezig. Hierdoor is het moeilijk om de gezondheid van de systemen te bewaken en snel te reageren op incidenten. Er is behoefte aan een oplossing die zowel monitoring als alerting biedt. |
+| Decision          | Implementatie van Prometheus voor monitoring en Alertmanager voor het beheren en routeren van alerts, inclusief ondersteuning voor verschillende meldingskanalen zoals e-mail en Slack. |
+| Alternatives      | 1. **Grafana Alerts**: Ingebouwde alerting in Grafana, eenvoudig te gebruiken maar mogelijk minder flexibel in configuratie en schaalbaarheid.<br>2. **OpsGenie**: Krachtige incidentmanagementtool, maar vereist een betaald abonnement en is mogelijk overkill voor onze behoeften.<br>3. **VictorOps**: Integratie met monitoringtools en incidentmanagement, maar ook een betaalde oplossing met mogelijk te veel functies voor onze specifieke situatie. |
+| Arguments         | 1. Prometheus biedt krachtige en flexibele monitoringmogelijkheden voor een breed scala aan systemen en applicaties.<br>2. Alertmanager biedt naadloze integratie met Prometheus, wat efficiëntie verhoogt.<br>3. Beide tools zijn open-source en kosteneffectief, wat past binnen onze budgettaire beperkingen.<br>4. Flexibiliteit in meldingskanalen zorgt voor snellere respons op incidenten.<br>5. Ondersteunt uitgebreide configuratie-opties voor het routeren en dempen van alerts. |
+
+| **Stakeholder**  | **Action**           | **Status**        | **Date**        |
+|------------------|----------------------|-------------------|-----------------|
+| Tim van de Ven   | Decision             | 🟩 **DECIDED**    | 26-10-2024      |
