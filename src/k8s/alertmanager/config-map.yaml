@@ -24,12 +24,12 @@ data:
     receivers:
     - name: alert-emailer
       email_configs:
-      - to: demo@devopscube.com
+      - to: t.vandeven@student.han.nl
         send_resolved: false
         from: from-email@email.com
         smarthost: smtp.eample.com:25
         require_tls: false
     - name: slack_demo
       slack_configs:
-      - api_url: https://hooks.slack.com/services/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sz4Qk
-        channel: '#devopscube-demo'
+      - api_url: https://hooks.slack.com/services/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
+        channel: '#pitstop-casus'
