@@ -26,3 +26,19 @@ In dit document worden de architectuur-significante beslissingen en bijbehorende
 | **Stakeholder** | **Action**           | **Status**        | **Date**         |
 |-----------------|---------------------|-------------------|------------------|
 | H.Harutjunjan   | Decision             | 🟥 **DISCARDED**          | 31-10-2024|
+
+
+## ARD2: Gebruik van KEDA voor Autoscaling
+
+| Name              | Tracing                                                   |
+|-------------------|-----------------------------------------------------------|
+| Current version   | 1                                                         |
+| Current status    | 🟩 **DECIDED**                                            |
+| Problem/Issue     | De huidige autoscaling-methode in Kubernetes is beperkt tot CPU- en geheugenmetrics, waardoor het moeilijk is om effectief te schalen op basis van event-driven workloads. |
+| Decision          | Gebruik KEDA voor event-driven autoscaling in Kubernetes om resources efficiënter te gebruiken door te schalen op basis van externe triggers zoals message queues. |
+| Alternatives      | Voortzetting van de standaard **Horizontal Pod Autoscaler (HPA)** voor CPU- en geheugengebaseerde autoscaling zonder event-driven ondersteuning. |
+| Arguments         | 1. KEDA biedt een flexibele, event-driven benadering voor autoscaling.<br>2. Vermindert resourcekosten door alleen te schalen op specifieke events.<br>3. Ondersteunt meer dan 50 scalers, inclusief integraties met message brokers zoals RabbitMQ en Kafka. |
+
+| **Stakeholder**  | **Action**           | **Status**        | **Date**        |
+|------------------|----------------------|-------------------|-----------------|
+| Osama Halabi     | Decision             | 🟩 **DECIDED**    | 26-10-2024      |

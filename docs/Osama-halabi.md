@@ -15,12 +15,12 @@ In mijn rol als [Developer en Ops-er] heb ik verschillende bijdragen geleverd bi
 Als Developer heb ik bijgedragen aan de volgende functionaliteiten:
 
 1. **Bijdragen 1**  
-   * Beschrijving: [Ik heb een micro service geimplementeerd voor de usecase (Als klant wil ik de kosten van de reparatie kunnen goedkeuren via een notificatie, zodat de reparatie snel kan doorgaan zonder extra vertraging.)[https://github.com/orgs/hanaim-devops/projects/26/views/1?pane=issue&itemId=83312279&issue=hanaim-devops%7Cpitstop-team-luna%7C6]]
-   * Link naar code: (commit)[https://github.com/hanaim-devops/pitstop-team-luna/commit/7578af0db6a1a23fe64e7aef1442b7aaba590fda]
+   * Beschrijving: Ik heb een micro service geimplementeerd voor de usecase [Als klant wil ik de kosten van de reparatie kunnen goedkeuren via een notificatie, zodat de reparatie snel kan doorgaan zonder extra vertraging.](https://github.com/orgs/hanaim-devops/projects/26/views/1?pane=issue&itemId=83312279&issue=hanaim-devops%7Cpitstop-team-luna%7C6)
+   * Link naar code: [commit](https://github.com/hanaim-devops/pitstop-team-luna/commit/7578af0db6a1a23fe64e7aef1442b7aaba590fda)
 
 2. **Bijdragen 2**  
    * Beschrijving: Ik heb een bestanden micro service aan gepast om mail naar de klant te kunnen sturen via een event die binnen komt.
-   * Link naar code: (commit)[https://github.com/hanaim-devops/pitstop-team-luna/commit/73bb6ff35d01904618fb5b23b3fe3c7aabbe1bcf]
+   * Link naar code: [commit](https://github.com/hanaim-devops/pitstop-team-luna/commit/73bb6ff35d01904618fb5b23b3fe3c7aabbe1bcf)
 
 
 ## 2. Bijdrage app configuratie/containers/kubernetes
@@ -30,23 +30,17 @@ Competenties: *DevOps-2 Orchestration, Containerization*
 Mijn belangrijkste bijdragen op het gebied van configuratie en containerization zijn:
 
 1. **Bijdragen 1**  
-   * Beschrijving: Ik heb KEDA geïntegreerd in het Kubernetes-cluster om dynamische autoscaling toe te passen op de meest gebruikte deployments. Deze configuratie zorgt ervoor dat de schaalbaarheid automatisch wordt afgestemd op de werkbelasting.
-   * [KEDA](https://github.com/hanaim-devops/pitstop-team-luna/pull/44)
+   * **[KEDA](https://github.com/hanaim-devops/pitstop-team-luna/pull/44):** Beschrijving: Ik heb KEDA geïntegreerd in het Kubernetes-cluster om dynamische autoscaling toe te passen op de meest gebruikte deployments. Deze configuratie zorgt ervoor dat de schaalbaarheid automatisch wordt afgestemd op de werkbelasting.
+  
 2. **Bijdragen 2**  
-   * Beschrijving: Ik heb voor elke scaledobject een yaml bestand gemaakt. Daarnaast heb ik een authenticatie trigger gemmakt voor het luisteren naar de events.
-   * [Yaml en config bestand](https://github.com/hanaim-devops/pitstop-team-luna/pull/44/files#diff-d72a9f0ad564819df062aded6468ab71252b49dc63cf16d7a7ee554c0bc8f02d).
+   * **[Yaml en config bestand](https://github.com/hanaim-devops/pitstop-team-luna/pull/44/files#diff-d72a9f0ad564819df062aded6468ab71252b49dc63cf16d7a7ee554c0bc8f02d):**  Beschrijving: Ik heb voor elke scaledobject een yaml bestand gemaakt. Daarnaast heb ik een authenticatie trigger gemmakt voor het luisteren naar de events.
+
 
 ## 3. Bijdrage versiebeheer, CI/CD pipeline en/of monitoring
 
 Competenties: *DevOps-1 - Continuous Delivery*, *DevOps-3 GitOps*, *DevOps-5 - SlackOps*
 
-1. **Bijdragen 1**  
-   * Beschrijving: Ik heb KEDA geïntegreerd in het Kubernetes-cluster om dynamische autoscaling toe te passen op de meest gebruikte deployments. Deze configuratie zorgt ervoor dat de schaalbaarheid automatisch wordt afgestemd op de werkbelasting.
-   * [KEDA](https://github.com/hanaim-devops/pitstop-team-luna/pull/44)
-2. **Bijdragen 2** 
-   * Beschrijving: Ik heb KEDA geïntegreerd in het Kubernetes-cluster om dynamische autoscaling toe te passen op de meest gebruikte deployments. Deze configuratie zorgt ervoor dat de schaalbaarheid automatisch wordt afgestemd op de werkbelasting.
-   * [KEDA](https://github.com/hanaim-devops/pitstop-team-luna/pull/44)
-
+Ik heb tijdens deze opdracht niet echt direct bijgedragen vaan de pijpline aangezien ik tijdens de weekodrachten aan deze competentie gewerkt heb.
 
 ## 4. Onderzoek
 
@@ -77,6 +71,16 @@ Met deze reviews heb ik een actieve bijdrage geleverd aan het verbeteren van de 
 
 Competenties: *DevOps-6 Onderzoek*
 
+1. **C4 Diagrammen**  
+   - [Context Diagram](../src/README.md): Dit diagram geeft een overzicht van het systeem als geheel, inclusief interacties met externe systemen en gebruikers. Het Container Diagram toont de verschillende containers binnen het systeem, inclusief de belangrijkste componenten en hun interacties.
+   In het component diagram worden de componenten binnen elke container verder opgesplitst en gedetailleerd weergegeven, wat helpt om de interne werking van de containers beter te begrijpen.
+
+2. **Architectural Decision Records (ADR's)**  
+   - [ADR-2: Gebruik van KEDA voor Autoscaling](./adr.md): De beslissing voor het kiezen van KEDA als autoscaling-oplossing en de overwegingen die hierbij zijn gemaakt, zoals efficiëntie, event-driven scaling, en compatibiliteit met de huidige Kubernetes-architectuur.
+
+
+3. **User Stories en Acceptatiecriteria**  
+   - [Kosten van de reparatie kunnen goedkeuren](https://github.com/orgs/hanaim-devops/projects/26?pane=issue&itemId=83312279&issue=hanaim-devops%7Cpitstop-team-luna%7C6): Voor deze user story heb ik acceptatiecriteria vast geledg om een duidlijk beeld te krijgen over waaraan deze story moet voldoen.
 
 
 ## 7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
