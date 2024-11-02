@@ -52,30 +52,32 @@ Competenties: *DevOps-1 - Continuous Delivery*, *DevOps-3 GitOps*, *DevOps-5 - S
 
 Competenties: *Nieuwsgierige houding*
 
-Tijdens de course BP heb ik onderzoek gedaan naar KEDA (Kubernetes Event-Driven Autoscaling), een tool die automatische scaling in Kubernetes mogelijk maakt op basis van externe events, zoals de belasting van message queues. Mijn blogpost, ["KEDA in Actie: Event-Driven Autoscaling voor Microservices binnen DevOps"]([link naar blog](https://github.com/hanaim-devops/devops-blog-oshalabi/tree/main/src/keda-in-actie-event-driven-autoscaling-voor-microservices-binnen-devops)), geeft een overzicht van wat KEDA is, hoe het werkt, en hoe het past binnen een microservices-omgeving zoals Pitstop. Ik heb KEDA succesvol toegepast door het te configureren voor autoscaling in een RabbitMQ-wachtrij. Dit stelde de Pitstop-applicatie in staat om dynamisch te schalen op basis van de werkelijke belasting, waardoor resources efficiënter werden ingezet.
+Tijdens de course BP heb ik onderzoek gedaan naar KEDA (Kubernetes Event-Driven Autoscaling), een tool die automatische scaling in Kubernetes mogelijk maakt op basis van externe events, zoals de belasting van message queues. Mijn blogpost, ["KEDA in Actie: Event-Driven Autoscaling voor Microservices binnen DevOps"](https://github.com/hanaim-devops/devops-blog-oshalabi/tree/main/src/keda-in-actie-event-driven-autoscaling-voor-microservices-binnen-devops), geeft een overzicht van wat KEDA is, hoe het werkt, en hoe het past binnen een microservices-omgeving zoals Pitstop. Ik heb KEDA succesvol toegepast door het te configureren voor autoscaling in een RabbitMQ-wachtrij. Dit stelde de Pitstop-applicatie in staat om dynamisch te schalen op basis van de werkelijke belasting, waardoor resources efficiënter werden ingezet.
 
 Extra leerervaringen omvatten onder andere het werken met TriggerAuthentication en ScaledObject configuraties, wat inzicht gaf in hoe KEDA secure toegang tot externe bronnen kan beheren. Sinds mijn eerste toepassing heb ik ook verder gekeken naar alternatieve scaling-tools, zoals Knative en custom controllers, en onderzocht hoe deze zich verhouden tot KEDA. Dit bood waardevolle kennis voor toekomstige scenario’s waarin andere scaling-benaderingen relevanter kunnen zijn, afhankelijk van het type workload.
 
-Aan gezien we minimaal resours hebben gekregen in onze cluster was het moglijk om keda te testen.
+Aan gezien we minimaal resours hebben gekregen in onze cluster was het moelijk om keda te testen.
 
 
 ## 5. Bijdrage code review/kwaliteit anderen en security
 
 Competenties: *DevOps-7 - Attitude*, *DevOps-4 DevSecOps*
 
-```markdown
-Beschrijf hier en geef links naar de minimaal 2 en maximaal 4 grootste *review acties* die je gedaan hebt, bijvoorbeeld pull requests incl. opmerkingen. Het interessantst zijn natuurlijk gevallen waar code niet optimaal was. Zorg dat je minstens een aantal reviews hebt waar in gitlab voor een externe de kwestie ook duidelijk is, in plaats van dat je dit altijd mondeling binnen het team oplost.
-```
-1. [Pull request review](https://github.com/hanaim-devops/pitstop-team-luna/pull/46#pullrequestreview-2407655279): Ik heb de ##TODO
+Tijdens mijn werkzaamheden binnen DevOps heb ik meerdere code-reviews uitgevoerd, waarbij ik me heb gericht op zowel de kwaliteit van de code als de werking van de CI/CD-pijplijn. Hier zijn de twee belangrijkste review-acties die ik heb uitgevoerd:
 
+1. **[Backend-Frontend Integratieprobleem in Pull Request](https://github.com/hanaim-devops/pitstop-team-luna/pull/46#pullrequestreview-2407655279)**  
+   Tijdens de review van deze pull request ontdekte ik een foutieve implementatie in de communicatie tussen de frontend en backend. De backend-API verwachtte zowel een URL-parameter als een JSON-body bij een POST-request, maar de frontend stuurde enkel een JSON-body, wat resulteerde in een 404-respons. Ik heb dit probleem gemeld en geadviseerd om de frontend-aanroep aan te passen zodat de vereiste URL-parameter werd meegegeven. Dit verbeterde de communicatie tussen de frontend en backend en voorkwam foutieve API-responsen.
+
+2. **[Pipeline-configuratie in Pull Request voor Customer Support Implementatie](https://github.com/hanaim-devops/pitstop-team-luna/pull/45)**  
+   In deze pull request merkte ik dat de CI/CD-pijplijn faalde vanwege een misconfiguratie. Ik heb de ontwikkelaar geadviseerd om eerst de pijplijnconfiguratie te corrigeren, zodat de builds zouden slagen en een consistente implementatie mogelijk werd. Door de configuratie in orde te maken, kon het team verdere wijzigingen stabiel en betrouwbaar doorvoeren in de productie-omgeving.
+
+Met deze reviews heb ik een actieve bijdrage geleverd aan het verbeteren van de kwaliteit en stabiliteit van de applicatie, evenals de betrouwbaarheid van de CI/CD-pijplijn. Deze acties ondersteunen de DevOps-competenties van *kwaliteit* en *continuïteit* door het implementeren van structurele verbeteringen en probleemoplossingen.
 
 ## 6. Bijdrage documentatie
 
 Competenties: *DevOps-6 Onderzoek*
 
-```markdown
-Zet hier een links naar en geef beschrijving van je C4 diagram of diagrammen, README of andere markdown bestanden, ADR's of andere documentatie. Bij andere markdown bestanden of doumentatie kun je denken aan eigen proces documentatie, zoals code standaarden, commit- of branchingconventies. Tot slot ook user stories en acceptatiecriteria (hopelijk verwerkt in gitlab issues en vertaalt naar `.feature` files) en evt. noemen en verwijzen naar handmatige test scripts/documenten.
-```
+
 
 ## 7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
 
