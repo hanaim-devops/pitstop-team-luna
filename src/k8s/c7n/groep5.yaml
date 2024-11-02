@@ -30,7 +30,7 @@ clusters:
 users:
   - name: "groep5"
     user:
-      token: "kubeconfig-user-z4jxqrxlt9:q6p97jmln7x7tmfc4ddpw46msm65k47n2fsfrxwxjmlwhhdcfvnsvr"
+      token: "kubeconfig-u-pqpjlttls6:cqf9b5nqbq8tnsb7brg5pfhpqhqbt64m8xrmnjlmzlgjmgjfwxkhrj"
 
 
 contexts:
