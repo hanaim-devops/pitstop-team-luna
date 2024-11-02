@@ -42,3 +42,4 @@ In dit document worden de architectuur-significante beslissingen en bijbehorende
 | **Stakeholder**  | **Action**           | **Status**        | **Date**        |
 |------------------|----------------------|-------------------|-----------------|
 | Osama Halabi     | Decision             | 🟩 **DECIDED**    | 26-10-2024      |
+
