@@ -78,11 +78,12 @@ Ik heb wat code gereviewed van groepsgenoten en zeker ook comments van mijn groe
 
 Competenties: *DevOps-6 Onderzoek*
 
-Voor dit project heb ik ons casus voor verduidelijking in de README geschreven met ook de uitbreidingen die wij zelf hadden besloten. Ik heb deze helaas wel laat gepushed maar al welk vroeg gemaakt zie ik nu. Bij de tasks link die ik heb toegevoegd kan je een snelle ctrl + f doen met mijn github naam (HHarutjun) en dan kan je alle taken zien die ik heb gemaakt met de daarbij behorende acceptatiecriteria. Hoewel ik zeker ben van het fijt dat ik ook een paar van de top niveau user stories taken heb aangemaakt is dat helaas niet terug te vinden op github. De subtaken echter wel dus ik hoop dat dat genoeg is. Ook heb ik mijn branch gemaakt op basis van de gegeven taak en zijn de commits ook gedaan op de taak zelf.
+Voor dit project heb ik ons casus voor verduidelijking in de README geschreven met ook de uitbreidingen die wij zelf hadden besloten. Ik heb deze helaas wel laat gepushed maar al welk vroeg gemaakt zie ik nu. Bij de tasks link die ik heb toegevoegd kan je een snelle ctrl + f doen met mijn github naam (HHarutjun) en dan kan je alle taken zien die ik heb gemaakt met de daarbij behorende acceptatiecriteria. Hoewel ik zeker ben van het fijt dat ik ook een paar van de top niveau user stories taken heb aangemaakt is dat helaas niet terug te vinden op github. De subtaken echter wel dus ik hoop dat dat genoeg is. Ook heb ik mijn branch gemaakt op basis van de gegeven taak en zijn de commits ook gedaan op de taak zelf. Daarnaast heb ik 2 ADR's geschreven voor beide "Jaeger" en "KEDA voor Design for Failure".
 
 - [Bijdrage in README.md](https://github.com/hanaim-devops/pitstop-team-luna/commit/7fe275e5d1450b48c63a224464508df5be499e63)
 - [Bijdrage aanmaken tasks en de daarbij behorende acceptatiecriteria](https://github.com/hanaim-devops/pitstop-team-luna/issues?q=is%3Aissue&page=1)
 - [Bijdrage branch en commit conventies](https://github.com/hanaim-devops/pitstop-team-luna/commits/3-als-monteur-wil-ik-automatisch-een-notificatie-krijgen-zodra-de-klant-goedkeuring-geeft-zodat-ik-de-reparatie-efficint-in-kan-plannen/)
+- [Zie ADR 1 en ADR4](/docs/adr.md)
 
 ## 7. Bijdrage Agile werken, groepsproces, communicatie opdrachtgever en soft skills
 

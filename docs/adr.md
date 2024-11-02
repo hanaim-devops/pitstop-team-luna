@@ -27,7 +27,7 @@ In dit document worden de architectuur-significante beslissingen en bijbehorende
 |-----------------|---------------------|-------------------|------------------|
 | H.Harutjunjan   | Decision             | 🟥 **DISCARDED**          | 31-10-2024|
 
-## ARD2: Gebruik van KEDA voor Autoscaling
+## ARD 2: Gebruik van KEDA voor Autoscaling
 
 | Name              | KEDA voor Autoscaling                                                   |
 |-------------------|-----------------------------------------------------------|
