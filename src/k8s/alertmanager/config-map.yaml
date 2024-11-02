@@ -31,5 +31,5 @@ data:
         require_tls: false
     - name: slack_demo
       slack_configs:
-      - api_url: https://hooks.slack.com/services/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
+      - api_url: "${SLACK_WEBHOOK_URL}"
         channel: '#pitstop-casus'
