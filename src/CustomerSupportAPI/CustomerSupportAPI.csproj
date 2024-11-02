@@ -9,6 +9,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="AspNetCore.HealthChecks.SqlServer" />
+        <PackageReference Include="Dapper" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
@@ -28,10 +30,5 @@
         <PackageReference Include="Serilog.Settings.Configuration"/>
         <PackageReference Include="Serilog.Enrichers.Environment"/>
         <PackageReference Include="Serilog.Sinks.Console"/>
-
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Migrations\" />
     </ItemGroup>
 </Project>

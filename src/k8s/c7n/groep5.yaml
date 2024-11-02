@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Config
+clusters:
+  - name: "groep5"
+    cluster:
+      server: "https://rancher.k8s.devops.aimsites.nl:8443/k8s/clusters/c-n68wc"
+  - name: "groep5-groep5"
+    cluster:
+      server: "https://10.31.0.227:6443"
+      certificate-authority-data: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM0VENDQ\
+      WNtZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFTTVJBd0RnWURWUVFERXdkcmRXSmwKT\
+      FdOaE1CNFhEVEkwTURreU16RXlNekkwTWxvWERUTTBNRGt5TVRFeU16STBNbG93RWpFUU1BNEdBM\
+      VVFQXhNSAphM1ZpWlMxallUQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ\
+      0VCQU5tZ2crNUlOR2d2Cmw4dnZSVUZKTFJYKy9EcjlLUkxwRnZkKzNnaFhnK200NWY3YjQ0Y3JWM\
+      1ZyZDd3QUMyc0RWK1RDZGVldk5hM2MKUGFWTS9oMFQyNlk3MnQ4M05kb0lzOU03ODAzVVBuWEwwS\
+      2pId0NaTDhQMmcwQnZFWExtVEl0MkdpQmN1RlhLNQpZNWFwWUdEbytJcXQ2a3hVVWhwaXo1ano3R\
+      jhPUlV5R2R4c2ZsV2tSeGlnYkIvV2U0YXEyQnd0Z0JNWHk0eWUwCnMvL0FVd0ZqWERVbHgyU1h1W\
+      mhHdjB4TUdxbU9uVkRGOGw4ZUxkWFJSTDVMbExWQXFpeFowS21WRjlha2duRDUKZERGYzNPamh3N\
+      UczWlN3Z3dxYnh2dHBja015QUs0VjBIMlRZdS90RkovcE1ldVJpNVUvdkRWZDhzU2JSZFQ1RwprQ\
+      VJFamdsc0ZIVUNBd0VBQWFOQ01FQXdEZ1lEVlIwUEFRSC9CQVFEQWdLa01BOEdBMVVkRXdFQi93U\
+      UZNQU1CCkFmOHdIUVlEVlIwT0JCWUVGTGlTNjM3d011ekV6MDR0c2gvVko5SUo1Nm4yTUEwR0NTc\
+      UdTSWIzRFFFQkN3VUEKQTRJQkFRQlR5bk10ZUlBWnFuVld0RHE3T1RLeGErcEN1anljVlFyMGtnM\
+      WxBVTdGZGx0TzJkcmM3dzNMajcvUgpEbENmbUlwTmo0SmI4REdlL3gyNWU0R3RTWGkxSXRWcnRVT\
+      lNUaWhYTEZRd2d2R2NzSUM4OHZUYzk2L21tTVJJCitUaVJscWVLaVBLd2Y5dHppZGlZaEhjRWtSW\
+      U0wN0hnR1ZXZmRwelJMQWtqY2lJeENnaG9YcVE3QjVEYm9IcGUKMmRiUVB3SDl2T0x0aGZkd1huV\
+      DFzZmhna3Z4ZXFKc0duaGxNOWlVL3d6QjRMRHJDaElOam9FUmJDbWFMZjJ6LwpLSHEzYjMzZytLW\
+      ElTMmo0T1NGZGpaMWJCRDcvbWR4dVNNV29icXFsM2NVSzk0VXlQdk9Uem1xMTVGZFkzbDNMCmVVU\
+      zBzeEdBZWY4NFNLWEJIc1hkTXlYL0tQajQKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
+
+users:
+  - name: "groep5"
+    user:
+      token: "kubeconfig-user-z4jxqrxlt9:q6p97jmln7x7tmfc4ddpw46msm65k47n2fsfrxwxjmlwhhdcfvnsvr"
+
+
+contexts:
+  - name: "groep5"
+    context:
+      user: "groep5"
+      cluster: "groep5"
+  - name: "groep5-groep5"
+    context:
+      user: "groep5"
+      cluster: "groep5-groep5"
+
+current-context: "groep5"

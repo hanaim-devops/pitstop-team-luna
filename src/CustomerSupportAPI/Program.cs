@@ -8,8 +8,9 @@ builder.Host.UseSerilog((context, loggerConfiguration) =>
         .Enrich.WithMachineName()
 );
 
-// add messagepublisher
-builder.Services.UseRabbitMQMessagePublisher(builder.Configuration);
+// add repo
+var sqlConnectionString = builder.Configuration.GetConnectionString("CustomerSupportCN");
+builder.Services.AddTransient<ICustomerSupportDataRepository>(_ => new CustomerSupportDataRepository(sqlConnectionString));
 
 // Add framework services
 builder.Services
@@ -22,20 +23,14 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomerSupport API", Version = "v1" });
 });
 
+// Add health checks
+builder.Services.AddHealthChecks().AddSqlServer(sqlConnectionString!, name: "CustomerSupportStoreHC");
+
 builder.Services.AddControllers()
     .AddNewtonsoftJson(options =>
     {
         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
     });
-
-// add DBContext
-var sqlConnectionString = builder.Configuration.GetConnectionString("CustomerSupportCN");
-builder.Services.AddDbContext<CustomerSupportContext>(options => options.UseSqlServer(sqlConnectionString));
-
-
-// Add health checks
-builder.Services.AddHealthChecks()
-    .AddDbContextCheck<CustomerSupportContext>();
  
 // setup MVC
 builder.Services.AddControllers();
@@ -46,6 +41,10 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+app.UseMvc();
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 // Enable middleware to serve generated Swagger as a JSON endpoint.
 app.UseSwagger();
 
@@ -53,12 +52,6 @@ app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "CustomerSupport API - v1");
 });
-
-// auto migrate db
-using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
-{
-    scope.ServiceProvider.GetService<CustomerSupportContext>().MigrateDB();
-}
 
 app.UseHealthChecks("/hc");
 

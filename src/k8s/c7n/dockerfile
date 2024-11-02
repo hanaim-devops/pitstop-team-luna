@@ -1,0 +1,20 @@
+﻿# Start from a Python 3.11 slim image
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Install Cloud Custodian and Kubernetes package
+RUN pip install c7n c7n-kube
+
+# Copy your policies into the container
+COPY ./Policies ./
+
+# Copy kubeconfig file into the container
+COPY ./groep5.yaml ./
+
+# Set the KUBECONFIG environment variable to the path of the kubeconfig file
+ENV KUBECONFIG=./groep5.yaml
+
+# Run the policy with Cloud Custodian
+CMD ["custodian", "run", "-s", "out", "policy.yml"]

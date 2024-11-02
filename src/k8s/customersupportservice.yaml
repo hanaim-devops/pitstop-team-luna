@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: customersupportservice
+    version: "1.0"
+  name: customersupportservice
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customersupportservice
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        app: customersupportservice
+        version: "1.0"
+    spec:
+      containers:
+      - env:
+        - name: DOTNET_ENVIRONMENT
+          value: Production
+        image: ghcr.io/hanaim-devops/pitstop-team-luna/customersupportservice:1.0
+        imagePullPolicy: IfNotPresent
+        name: customersupportservice
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: ghcr-secret

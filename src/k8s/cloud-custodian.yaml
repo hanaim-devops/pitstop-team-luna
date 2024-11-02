@@ -1,0 +1,49 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cloud-custodian
+    version: "1.0"
+  name: cloud-custodian
+  namespace: pitstop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-custodian
+      version: "1.0"
+  template:
+    metadata:
+      labels:
+        app: cloud-custodian
+        version: "1.0"
+    spec:
+      containers:
+        - env:
+            - name: DOTNET_ENVIRONMENT
+              value: Production
+          image: ghcr.io/hanaim-devops/pitstop-team-luna/cloudcustodian:1.0
+          imagePullPolicy: IfNotPresent
+          name: cloud-custodian
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: ghcr-secret
+          
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cloud-custodian
+  name: cloud-custodian
+  namespace: pitstop
+spec:
+  type: NodePort
+  ports:
+    - name: "http-5999"
+      port: 5999
+      targetPort: 6001
+      nodePort: 30027
+  selector:
+    app: cloud-custodian

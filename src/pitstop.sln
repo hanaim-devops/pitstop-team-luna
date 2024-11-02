@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairManagementAPI", "Repa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSupportAPI", "CustomerSupportAPI\CustomerSupportAPI.csproj", "{A887FF9F-B172-4D05-8C19-93F0DBE4E364}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSupportService", "CustomerSupportService\CustomerSupportService.csproj", "{DCCB8AD0-F0F2-403C-8B8F-C466B37C3F94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,10 @@ Global
 		{A887FF9F-B172-4D05-8C19-93F0DBE4E364}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A887FF9F-B172-4D05-8C19-93F0DBE4E364}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A887FF9F-B172-4D05-8C19-93F0DBE4E364}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCCB8AD0-F0F2-403C-8B8F-C466B37C3F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCCB8AD0-F0F2-403C-8B8F-C466B37C3F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCCB8AD0-F0F2-403C-8B8F-C466B37C3F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCCB8AD0-F0F2-403C-8B8F-C466B37C3F94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
