@@ -8,11 +8,13 @@
 
 ## Context Diagram
 
+**Beschrijving:** Dit diagram toont de hoofdcomponenten van het PitStop-systeem en hun interacties. De manager beheert klant- en voertuiggegevens binnen het systeem, terwijl de monteur werkt aan toegewezen taken. Het systeem zelf (PitStop) interageert met externe systemen voor aanvullende functionaliteiten.
+
 ```mermaid
 graph TD
     style Manager fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style Monteur fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
-    style PitStop fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style PitStop fill:#fff,stroke:#333,stroke-width:1px,color:#000000
     style Externe_APIs fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     Manager -->|Beheert klant- en voertuiggegevens| PitStop
     Monteur -->|Werkt aan toegewezen taken| PitStop
@@ -22,10 +24,11 @@ graph TD
     Monteur[Monteur]
     PitStop[System: PitStop]
     Externe_APIs[Externe Systemen]
-    
 ```
 
 ## Container
+
+**Beschrijving:** Dit containerdiagram geeft een overzicht van de verschillende subsystemen binnen het PitStop-systeem. De WebApp fungeert als gebruikersinterface en communiceert met verschillende API's zoals Customer Management API, Repair Management API en Vehicle Management API. De Notification Service en Invoice Service ondersteunen de operationele processen, terwijl de Customer Support API en Service zorgen voor klantondersteuning.
 
 ```mermaid
 graph TD
@@ -67,6 +70,8 @@ graph TD
 ```
 
 ## Component
+
+**Beschrijving:** Dit componentdiagram biedt een gedetailleerd overzicht van de interne componenten van de Repair Management API en andere gerelateerde services binnen het PitStop-systeem. Het toont hoe verschillende componenten zoals controllers, commando's, data-toegangslagen, DTO's, gebeurtenissen, migraties, modellen, configuratiebestanden en databases met elkaar verbonden zijn en samenwerken om de functionaliteit van de API te ondersteunen. Het diagram toont ook de Notification Service en Customer Support API en Service. Alleen de componenten die tijdens dit project zijn gebouwd, worden in dit diagram beschreven.
 
 ```mermaid
 graph TD
@@ -153,7 +158,7 @@ graph TD
 
     style RepairManagementAPI fill:#fff,stroke:#333,stroke-width:2px,color:#000000
     style RepairManagementControllers fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
-    style RepairManagementCommands fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
+    style RepairManagementCommands fill:#bfb,stroke:#333,stroke-width:1px,color:#000000
     style RepairManagementDataAccess fill:#bfb,stroke:#333,stroke-width:1px,color:#000000
     style RepairManagementDTO fill:#fbb,stroke:#333,stroke-width:1px,color:#000000
     style RepairManagementEvents fill:#f9f,stroke:#333,stroke-width:1px,color:#000000
@@ -179,7 +184,7 @@ graph TD
     style CustomerSupportAPIConfig fill:#f99,stroke:#333,stroke-width:1px,color:#000000
     style CustomerSupportAPIRepository fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
     style CustomerSupportAPIRepositories fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
-    style CustomerSupportAPIControllers fill:#cfc,stroke:#333,stroke-width:1px,color:#000000
+    style CustomerSupportAPIControllers fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
     style CustomerSupportAPIEvents fill:#f9f,stroke:#333,stroke-width:1px,color:#000000
     style CustomerSupportAPIModels fill:#9bf,stroke:#333,stroke-width:1px,color:#000000
  
@@ -192,6 +197,22 @@ graph TD
     style CustomerSupportServiceModels fill:#9bf,stroke:#333,stroke-width:1px,color:#000000
     style EventHandlerWorker fill:#bbf,stroke:#333,stroke-width:1px,color:#000000
 ```
+
+## Legenda
+
+| Kleur | Betekenis |
+|-------|-----------|
+| <span style="color:#bbf">Lichtblauw (#bbf)</span>  | Algemene componenten |
+| <span style="color:#f96">Oranje (#f96)</span>  | Gebruikersinterface |
+| <span style="color:#bfb">Lichtgroen (#bfb)</span>  | Commando- en data-toegangslagen |
+| <span style="color:#fbb">Lichtroze (#fbb)</span>  | Data Transfer Objecten (DTO) |
+| <span style="color:#f9f">Lichtpaars (#f9f)</span>  | Gebeurtenissen (Events) |
+| <span style="color:#ff9">Geel (#ff9)</span>  | Migraties en sjablonen |
+| <span style="color:#9bf">Lichtblauw (#9bf)</span>  | Modellen |
+| <span style="color:#f99">Lichtrood (#f99)</span>  | Configuratiebestanden |
+| <span style="color:#9ff">Lichtblauw (#9ff)</span>  | Program.cs-bestanden |
+| <span style="color:#cfc">Lichtgroen (#cfc)</span>  | Databases |
+| <span style="color:#fff">Wit (#fff)</span>  | Hoofdcomponenten en sub-systemen |
 
 [//]: # (## Code)
 
