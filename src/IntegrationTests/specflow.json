@@ -1,0 +1,12 @@
+{
+  "bindingCulture": {
+    "name": "en-US"
+  },
+  "language": {
+    "feature": "en"
+  },
+  "livingDocGenerator": {
+    "enabled": true,
+    "filePath": "{CurrentDirectory}\\TestResult\\TestExecution.json"
+  }
+}

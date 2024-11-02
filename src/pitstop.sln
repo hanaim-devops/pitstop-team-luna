@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSupportService", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSupportAPI.UnitTests", "CustomerSupportAPI.UnitTests\CustomerSupportAPI.UnitTests.csproj", "{68AE4833-1D4B-453D-A743-920E32E446F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{9FB5C51B-59DD-4FE3-8DFA-E893D247307F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -114,6 +116,10 @@ Global
 		{68AE4833-1D4B-453D-A743-920E32E446F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68AE4833-1D4B-453D-A743-920E32E446F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68AE4833-1D4B-453D-A743-920E32E446F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FB5C51B-59DD-4FE3-8DFA-E893D247307F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FB5C51B-59DD-4FE3-8DFA-E893D247307F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FB5C51B-59DD-4FE3-8DFA-E893D247307F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FB5C51B-59DD-4FE3-8DFA-E893D247307F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
