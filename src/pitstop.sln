@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSupportAPI", "Custo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSupportService", "CustomerSupportService\CustomerSupportService.csproj", "{DCCB8AD0-F0F2-403C-8B8F-C466B37C3F94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSupportAPI.UnitTests", "CustomerSupportAPI.UnitTests\CustomerSupportAPI.UnitTests.csproj", "{68AE4833-1D4B-453D-A743-920E32E446F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,10 @@ Global
 		{DCCB8AD0-F0F2-403C-8B8F-C466B37C3F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCCB8AD0-F0F2-403C-8B8F-C466B37C3F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCCB8AD0-F0F2-403C-8B8F-C466B37C3F94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68AE4833-1D4B-453D-A743-920E32E446F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68AE4833-1D4B-453D-A743-920E32E446F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68AE4833-1D4B-453D-A743-920E32E446F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68AE4833-1D4B-453D-A743-920E32E446F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
