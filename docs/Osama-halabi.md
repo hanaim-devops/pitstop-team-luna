@@ -1,8 +1,27 @@
-# Eigen bijdrage Osama Halabi
+# Eigen bijdragen Osama Halabi
 
-```markdown
-Je begin hier onder het hoofdkopje met een samenvatting van je bijdrage zoals je die hieronder uitwerkt. Best aan het einde schrijven. Zorg voor een soft landing van de beoordelaar, maar dat deze ook direct een beeld krijgt. Je hoeft geen heel verslag te schrijven. De kopjes kunnen dan wat korter met wat bullet lijst met links voor 2 tot 4 zaken en 1 of 2 inleidende zinnen erboven. Een iets uitgebreidere eind conclusie schrijf je onder het laatste kopje.
-```
+## Samenvatting van mijn Bijdrage
+
+Tijdens het project heb ik in mijn rol als Developer en Ops-er bijgedragen aan verschillende onderdelen van de applicatie en infrastructuur, waarbij ik me richtte op code-ontwikkeling, configuratie en documentatie. Hieronder geef ik een kort overzicht van mijn belangrijkste bijdragen:
+
+- **Microservices en Functionaliteit**:
+  - Implementatie van een notificatie- en goedkeuringssysteem voor reparatiekosten. [Code](https://github.com/hanaim-devops/pitstop-team-luna/commit/7578af0db6a1a23fe64e7aef1442b7aaba590fda)
+  - Aangepaste bestandenservice voor het versturen van notificaties via e-mail. [Code](https://github.com/hanaim-devops/pitstop-team-luna/commit/73bb6ff35d01904618fb5b23b3fe3c7aabbe1bcf)
+  - Unit tests toegevoegd voor RepairManagementAPI om robuustheid te verbeteren. [Code](https://github.com/hanaim-devops/pitstop-team-luna/commit/75b87f71bdd418f84f363e35478a165ed0a617c3)
+
+- **Configuratie en Containerization**:
+  - Integratie van KEDA voor autoscaling op basis van werkbelasting in Kubernetes. [Pull Request](https://github.com/hanaim-devops/pitstop-team-luna/pull/44)
+  - YAML-configuraties voor ScaledObjects en TriggerAuthentication opgezet voor event-driven autoscaling. [YAML Bestand](https://github.com/hanaim-devops/pitstop-team-luna/pull/44/files#diff-d72a9f0ad564819df062aded6468ab71252b49dc63cf16d7a7ee554c0bc8f02d)
+
+- **Documentatie en Diagrammen**:
+  - Ontwikkeling van C4 Model met Context-, Container- en Component Diagrammen voor overzicht en inzicht in architectuur. [C4 Diagrammen](https://github.com/hanaim-devops/pitstop-team-luna/pull/50/commits)
+  - ADR opgesteld voor de keuze van KEDA als autoscaling-oplossing in Kubernetes. [ADR-2](./adr.md)
+
+- **Scrum en Teamprocessen**:
+  - Actieve deelname aan Sprint Planning, Daily Standups, en Retrospectives, met nadruk op het structureren van user stories en effectieve communicatie.
+  - Ondersteuning van teamleden en zorg voor een goede sfeer en samenwerking binnen het project. [Miro Board](https://miro.com/app/board/uXjVLMAHh4U=/)
+
+In deze rollen heb ik zowel mijn DevOps-vaardigheden als mijn samenwerkings- en communicatievaardigheden kunnen verbeteren, wat de voortgang en kwaliteit van het project ten goede kwam.
 
 ## 1. Code/platform bijdrage
 
@@ -21,6 +40,10 @@ Als Developer heb ik bijgedragen aan de volgende functionaliteiten:
 2. **Bijdragen 2**  
    * Beschrijving: Ik heb een bestanden micro service aan gepast om mail naar de klant te kunnen sturen via een event die binnen komt.
    * Link naar code: [commit](https://github.com/hanaim-devops/pitstop-team-luna/commit/73bb6ff35d01904618fb5b23b3fe3c7aabbe1bcf)
+
+3. **Bijdragen 3**  
+   * Beschrijving: Ik heb een aantal unit tests gemaakt voor de repairmanagementapi waarin ik bijna alle mogelijkheden tests.
+   * Link naar code: [commit](https://github.com/hanaim-devops/pitstop-team-luna/commit/75b87f71bdd418f84f363e35478a165ed0a617c3)
 
 
 ## 2. Bijdrage app configuratie/containers/kubernetes
@@ -50,7 +73,7 @@ Tijdens de course BP heb ik onderzoek gedaan naar KEDA (Kubernetes Event-Driven 
 
 Extra leerervaringen omvatten onder andere het werken met TriggerAuthentication en ScaledObject configuraties, wat inzicht gaf in hoe KEDA secure toegang tot externe bronnen kan beheren. Sinds mijn eerste toepassing heb ik ook verder gekeken naar alternatieve scaling-tools, zoals Knative en custom controllers, en onderzocht hoe deze zich verhouden tot KEDA. Dit bood waardevolle kennis voor toekomstige scenario’s waarin andere scaling-benaderingen relevanter kunnen zijn, afhankelijk van het type workload.
 
-Aan gezien we minimaal resours hebben gekregen in onze cluster was het moelijk om keda te testen.
+Aan gezien we minimaal resours hebben gekregen in onze cluster was het moelijk om keda te testen daarom zal heb ik hem werl locaal getest.
 
 
 ## 5. Bijdrage code review/kwaliteit anderen en security
@@ -72,11 +95,11 @@ Met deze reviews heb ik een actieve bijdrage geleverd aan het verbeteren van de 
 Competenties: *DevOps-6 Onderzoek*
 
 1. **C4 Diagrammen**  
-   - [Context Diagram](../src/README.md): Dit diagram geeft een overzicht van het systeem als geheel, inclusief interacties met externe systemen en gebruikers. Het Container Diagram toont de verschillende containers binnen het systeem, inclusief de belangrijkste componenten en hun interacties.
-   In het component diagram worden de componenten binnen elke container verder opgesplitst en gedetailleerd weergegeven, wat helpt om de interne werking van de containers beter te begrijpen.
+   - - [Context Diagram en C4 Model](../src/README.md): Ik heb het initiatief genomen om een C4 Model te maken voor ons project om een visueel overzicht te bieden van de architectuur. Hierbij heb ik zowel het Context- als het Container Diagram opgesteld. Daarnaast heb ik Component Diagrammen gemaakt voor de Notification Service en de Repair Management API. Deze toevoegingen bieden een gedetailleerd inzicht in de structuur en interacties binnen ons systeem. [Pull Request](https://github.com/hanaim-devops/pitstop-team-luna/pull/50/commits).
+
 
 2. **Architectural Decision Records (ADR's)**  
-   - [ADR-2: Gebruik van KEDA voor Autoscaling](./adr.md): De beslissing voor het kiezen van KEDA als autoscaling-oplossing en de overwegingen die hierbij zijn gemaakt, zoals efficiëntie, event-driven scaling, en compatibiliteit met de huidige Kubernetes-architectuur.
+   - [ADR-2: Gebruik van KEDA voor Autoscaling](./adr.md): De beslissing voor het kiezen van KEDA als autoscaling-oplossing en de overwegingen die hierbij zijn gemaakt, zoals efficiëntie, event-driven scaling, en compatibiliteit met de huidige Kubernetes-architectuur. [commit](https://github.com/hanaim-devops/pitstop-team-luna/commit/086060a8d47dc8998a5d0b182c507b1d561e8a68#diff-d63e2326600a72e683dade5a5840c70099811a2416b302335319845f42fe053c)
 
 
 3. **User Stories en Acceptatiecriteria**  
@@ -87,31 +110,43 @@ Competenties: *DevOps-6 Onderzoek*
 
 Competenties: *DevOps-1 - Continuous Delivery*, *Agile*
 
-```markdown
-Beschrijf hier minimaal 2 en maximaal 4 situaties van je inbreng en rol tijdens Scrum ceremonies. Beschrijf ook feedback of interventies tijdens Scrum meetings, zoals sprint planning of retrospective die je aan groespgenoten hebt gegeven.
+Tijdens het project heb ik actief deelgenomen aan Scrum ceremonies en bijgedragen aan zowel het groepsproces als de communicatie met de opdrachtgever. Enkele voorbeelden van mijn inbreng zijn:
 
-Beschrijf tijdens het project onder dit kopje ook evt. verdere activiteiten rondom communicatie met de opdrachtgever of domein experts, of andere meer 'professional skills' of 'soft skilss' achtige zaken.
-```
+1. **Sprint Planning**: Tijdens de sprint planning heb ik actief geholpen bij het inschatten van de benodigde tijd voor verschillende taken en het prioriteren van de backlog-items. Samen met het team heb ik gewerkt aan het opstellen van duidelijke sprintdoelen om een goed gefocuste en haalbare sprint te plannen.
 
-Tijdens het project heb ik actief deelgenomen aan Scrum ceremonies en bijgedragen aan het groepsproces en de communicatie met de opdrachtgever. Enkele voorbeelden van mijn inbreng zijn:
+2. **Daily Standup Meetings**: Om de dagelijkse communicatie en afstemming binnen het team te verbeteren, heb ik de Daily Standup meeting aangemaakt en op 9:30 gepland. Omdat een teamlid niet beschikbaar was op dit tijdstip, heb ik het tijdstip in overleg met het team verplaatst naar 10:00, zodat iedereen kon deelnemen.
 
-1. Tijdens de sprint planning heb ik geholpen bij het inschatten van de benodigde tijd, prioritering van taken en inplannen van de sprintdoelen.
-2. Tijdens de technische discussie met de opdrachtgever heb ik het proces [genotuleerd](https://github.com/hanaim-devops/pitstop-team-luna/commit/c9f2829c4debd22ce8c2707c887216650d54e0b8).
-3. Om het groepsproces te verbeteren heb ik een Daily Standup meeting aangemaakt, dagelijks om 10.00.
-4. ...
+3. **Retrospective**: Tijdens de retrospectives heb ik constructieve feedback gegeven over ons teamproces. Ik heb een aantal verbeterpunten genoemd, zoals het tijdig oppakken en afronden van individuele taken en heldere communicatie over voortgang. Ook heb ik enkele successen benadrukt om het team te motiveren. [Miro Board](https://miro.com/app/board/uXjVLMAHh4U=/)
+
+
+Deze activiteiten hebben bijgedragen aan een goede samenwerking, duidelijke communicatie en een betere afstemming binnen het team en met de opdrachtgever.
   
 ## 8. Leerervaringen
 
 Competenties: *DevOps-7 - Attitude*
 
-```markdown
-Geef tot slot hier voor jezelf minimaal 2 en maximaal **4 tops** en 2 dito (2 tot 4) **tips** á la professional skills die je kunt meenemen in je verdere loopbaan. Beschrijf ook de voor jezelf er het meest uitspringende hulp of feedback van groepsgenoten die je (tot dusver) hebt gehad tijdens het project.
-```
+Tot slot, enkele **tops** en **tips** op het gebied van professional skills die ik meeneem voor mijn verdere loopbaan:
+
+### Tops
+1. **Samenwerken**: De samenwerking binnen het team verliep soepel en effectief. We hebben elkaar goed ondersteund, wat de productiviteit en teamdynamiek bevorderde.
+2. **Behulpzaamheid**: Ik heb actief mijn teamleden geholpen met hun taken wanneer ze ondersteuning nodig hadden. Dit heeft bijgedragen aan een positieve sfeer en een vlotte voortgang van het project.
+
+### Tips
+1. **User Stories beter verdelen**: Ik heb geleerd dat ik mijn user stories beter kan opdelen in kleinere, beheersbare taken. Dit zal de voortgang en overzichtelijkheid van mijn werk verbeteren.
+2. **Sprinttaken tijdig oppakken**: Een ander aandachtspunt is om mijn taken eerder in de sprint op te pakken. Dit voorkomt last-minute stress en zorgt voor meer spreiding van werk.
+
+Daarnaast heb ik tijdens het project waardevolle hulp en feedback ontvangen van mijn groepsgenoten. Eén van de meest opvallende momenten was toen een teamlid me op een constructieve manier feedback gaf over de indeling van mijn user story, wat me hielp mijn aanpak aan te passen en mijn werk effectiever te structureren.
 
 ## 9. Conclusie & feedback
 
 Competenties: *DevOps-7 - Attitude*
 
-```markdown
-Schrijf een conclusie van al bovenstaande punten. En beschrijf dan ook wat algemener hoe je terugkijkt op het project. Geef wat constructieve feedback, tips aan docenten/beoordelaars e.d. En beschrijf wat je aan devops kennis, vaardigheden of andere zaken meeneemt naar je afstudeeropdracht of verdere loopbaan.
-```
+Terugkijkend op dit project ben ik tevreden over mijn bijdrage en de geleverde inspanningen. Ik heb veel kunnen leren en bijdragen aan zowel technische als organisatorische aspecten, zoals het implementeren van nieuwe functionaliteiten, het opzetten van configuraties voor autoscaling met KEDA, en het maken van ondersteunende documentatie en diagrammen. Deze taken hebben me geholpen om meer inzicht te krijgen in de complete DevOps-levenscyclus en de samenwerking binnen een team.
+
+Tijdens het project heb ik gemerkt dat heldere communicatie en een goede verdeling van user stories belangrijk zijn voor een soepel verloop. Het werken met KEDA en Kubernetes heeft me geholpen mijn DevOps-technieken te verfijnen, en het opzetten van een C4 Model en ADR's bood me waardevolle ervaring in het documenteren van beslissingen en architectuur.
+
+Constructieve feedback aan docenten/beoordelaars:
+- Het zou waardevol zijn om meer voorbeelden en richtlijnen te krijgen over het documenteren van beslissingen met ADR's in DevOps-projecten, zodat studenten vanaf het begin gestructureerd kunnen werken.
+- Daarnaast zou een sessie over het opstellen van effectieve user stories en het opdelen ervan in kleine, beheersbare taken nuttig zijn om overzicht en controle te behouden in grotere projecten.
+
+Deze opgedane kennis en vaardigheden zal ik meenemen naar toekomstige DevOps-projecten en mijn verdere loopbaan, waarin ik vooral de waarde van heldere communicatie, documentatie, en continue verbetering van de DevOps-pijplijn meeneem. Met deze ervaring voel ik me beter voorbereid op mijn afstudeeropdracht en ben ik ervan overtuigd dat ik de geleerde technieken kan toepassen in een professionele werkomgeving.
