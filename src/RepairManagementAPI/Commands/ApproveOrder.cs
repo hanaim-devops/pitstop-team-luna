@@ -8,7 +8,8 @@ public class ApproveOrder : Command
     public readonly string CustomerName;
     public readonly string LicenseNumber;
 
-    public ApproveOrder(Guid messageId, Guid repairOrderId, DateTime approveDate, string customerId, string customerName, string licenseNumber)
+    public ApproveOrder(Guid messageId, Guid repairOrderId, DateTime approveDate, string customerId,
+        string customerName, string licenseNumber)
         : base(messageId)
     {
         RepairOrderId = repairOrderId;
@@ -16,5 +17,9 @@ public class ApproveOrder : Command
         CustomerId = customerId;
         CustomerName = customerName;
         LicenseNumber = licenseNumber;
+    }
+
+    public ApproveOrder()
+    {
     }
 }

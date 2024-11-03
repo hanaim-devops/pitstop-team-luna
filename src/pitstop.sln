@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSupportAPI.UnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{9FB5C51B-59DD-4FE3-8DFA-E893D247307F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairManagementAPITests", "RepairManagementAPITests\RepairManagementAPITests.csproj", "{F60AEC9D-543A-43CD-BF75-A1A843648B97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -120,6 +122,10 @@ Global
 		{9FB5C51B-59DD-4FE3-8DFA-E893D247307F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FB5C51B-59DD-4FE3-8DFA-E893D247307F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FB5C51B-59DD-4FE3-8DFA-E893D247307F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F60AEC9D-543A-43CD-BF75-A1A843648B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F60AEC9D-543A-43CD-BF75-A1A843648B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F60AEC9D-543A-43CD-BF75-A1A843648B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F60AEC9D-543A-43CD-BF75-A1A843648B97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
