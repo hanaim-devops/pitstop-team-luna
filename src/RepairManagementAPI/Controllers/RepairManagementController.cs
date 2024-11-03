@@ -114,15 +114,6 @@ namespace Pitstop.RepairManagementAPI.Controllers
                 return BadRequest("Invalid request. Some required data is missing.");
             }
 
-            Console.WriteLine($"SendRepairOrder Details:");
-            Console.WriteLine($"  Customer: {command.CustomerInfo.CustomerName}");
-            Console.WriteLine($"  LicenseNumber: {command.VehicleInfo.LicenseNumber}");
-            Console.WriteLine($"  TotalCost: {command.TotalCost:C}");
-            Console.WriteLine($"  LaborCost: {command.LaborCost:C}");
-            Console.WriteLine($"  IsApproved: {command.IsApproved}");
-            Console.WriteLine($"  CreatedAt: {command.CreatedAt}");
-            Console.WriteLine($"  Status: {command.Status}");
-
             // Create new RepairOrder
             var repairOrder = new RepairOrder
             {
@@ -142,6 +133,8 @@ namespace Pitstop.RepairManagementAPI.Controllers
             };
 
             await _context.RepairOrders.AddAsync(repairOrder);
+            // Calculate total parts cost
+            decimal partsCost = 0;
             List<(string Name, decimal Cost)> vehiclePartsList = new List<(string Name, decimal Cost)>();
             if (command.ToRepairVehicleParts != null)
             {
@@ -151,6 +144,7 @@ namespace Pitstop.RepairManagementAPI.Controllers
                     if (vehiclePart != null)
                     {
                         vehiclePartsList.Add((vehiclePart.PartName, vehiclePart.PartCost));
+                        partsCost += vehiclePart.PartCost;
                         var repairOrderVehiclePart = new RepairOrderVehicleParts
                         {
                             RepairOrderId = repairOrder.Id,
@@ -170,9 +164,16 @@ namespace Pitstop.RepairManagementAPI.Controllers
             {
                 Console.WriteLine("No vehicle parts were selected or passed.");
             }
+            
+            // Validate that TotalCost is equal to the sum of LaborCost and PartsCost
+            if (command.TotalCost != command.LaborCost + partsCost)
+            {
+                Console.WriteLine("Total cost does not match the sum of labor cost and parts cost.");
+                return BadRequest("Invalid request. Total cost does not match the sum of labor cost and parts cost.");
+            }
 
             await _context.SaveChangesAsync();
-
+            
 
             var repairOrderSentEvent = new RepairOrderSent(
                 command.MessageId,
