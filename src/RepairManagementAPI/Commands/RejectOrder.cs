@@ -7,7 +7,8 @@ public class RejectOrder
     public string CustomerName { get; set; }
     public string LicenseNumber { get; set; }
 
-    public RejectOrder(Guid messageId, Guid repairOrderId, string rejectReason, string customerName, string licenseNumber)
+    public RejectOrder(Guid messageId, Guid repairOrderId, string rejectReason, string customerName,
+        string licenseNumber)
     {
         MessageId = messageId;
         RepairOrderId = repairOrderId;
@@ -15,5 +16,9 @@ public class RejectOrder
         RejectedAt = DateTime.UtcNow;
         CustomerName = customerName;
         LicenseNumber = licenseNumber;
+    }
+
+    public RejectOrder()
+    {
     }
 }

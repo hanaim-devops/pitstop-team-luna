@@ -33,6 +33,10 @@ public class SendRepairOrder : Command
         CreatedAt = createdAt;
         Status = status;
     }
+
+    public SendRepairOrder()
+    {
+    }
 }
 
 public class CustomerInfo
