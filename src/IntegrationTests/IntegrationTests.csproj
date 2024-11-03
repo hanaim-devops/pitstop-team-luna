@@ -9,7 +9,13 @@
     <ItemGroup>
       <ProjectReference Include="..\CustomerSupportAPI\CustomerSupportAPI.csproj" />
     </ItemGroup>
-    
+    <ItemGroup>
+        <ProjectReference Include="..\CustomerManagementAPI\CustomerManagementAPI.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\RepairManagementAPI\CustomerManagementAPI.csproj" />
+
+    </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
         <PackageReference Include="Moq" Version="4.20.72" />
