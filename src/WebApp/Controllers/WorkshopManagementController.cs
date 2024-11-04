@@ -87,7 +87,8 @@
                 Id = job.Id,
                 Date = planningDate,
                 ActualStartTime = job.StartTime,
-                ActualEndTime = job.EndTime
+                ActualEndTime = job.EndTime,
+                LicensePlate = job.Vehicle.LicenseNumber
             };
             return View(model);
         }, View("Offline", new WorkshopManagementOfflineViewModel()));
@@ -151,10 +152,12 @@
                 string dateStr = inputModel.Date.ToString("yyyy-MM-dd");
                 DateTime actualStartTime = inputModel.Date.Add(inputModel.ActualStartTime.Value.TimeOfDay);
                 DateTime actualEndTime = inputModel.Date.Add(inputModel.ActualEndTime.Value.TimeOfDay);
-
+                MaintenanceJob job = await _workshopManagementAPI.GetMaintenanceJob(dateStr, inputModel.Id.ToString());
+                
                 FinishMaintenanceJob cmd = new FinishMaintenanceJob(Guid.NewGuid(), inputModel.Id,
-                    actualStartTime, actualEndTime, inputModel.Notes);
-
+                    actualStartTime, actualEndTime, inputModel.Notes, (job.Customer.CustomerId, job.Customer.Name, job.Customer.TelephoneNumber),
+                    (job.Vehicle.LicenseNumber, job.Vehicle.Brand, job.Vehicle.Type));
+                
                 await _workshopManagementAPI.FinishMaintenanceJob(dateStr, inputModel.Id.ToString("D"), cmd);
 
                 return RedirectToAction("Details", new { planningDate = dateStr, jobId = inputModel.Id });

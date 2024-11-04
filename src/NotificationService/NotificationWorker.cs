@@ -1,3 +1,4 @@
+using DotNetEnv;
 using Pitstop.NotificationService.Message;
 using Pitstop.NotificationService.Message.Templates;
 
@@ -172,11 +173,14 @@ public class NotificationWorker : IHostedService, IMessageHandlerCallback
 
     private async Task HandleAsync(MaintenanceJobFinished mjf)
     {
-        var message = new VehicleManagementFinished("Maintenance finished", $"Dear {mjf.JobId}",
-        new List<string>(["Your maintenance job has finished.", "Please pickup your car"]));
+        var message = new VehicleManagementFinished("Maintenance finished", $"Dear {mjf.CustomerInfo.Name}",
+        new List<string>([$"Your maintenance job has finished at {DateTime.Now}", $"Please pickup your car with license plate {mjf.VehicleInfo.LicenseNumber}."]));
 
         try
         {   
+            Env.Load();
+            var webhookUrl = Environment.GetEnvironmentVariable("PITSTOP_APP");
+            Log.Information("webhook = ", webhookUrl);
             Log.Information("Sending notification for finished maintenance job: {job}", mjf.JobId);
             await _slackMessenger.PostMessage(message.BuildMessage());
         }

@@ -18,7 +18,9 @@ public static class Mappers
         source.JobId,
         source.StartTime,
         source.EndTime,
-        source.Notes
+        source.Notes,
+        source.VehicleInfo,
+        source.CustomerInfo
     );
 
     public static WorkshopPlanningDTO MapToDTO(this WorkshopPlanning source) =>

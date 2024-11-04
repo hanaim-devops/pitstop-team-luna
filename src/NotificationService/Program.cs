@@ -1,4 +1,6 @@
-﻿IHost host = Host
+﻿using DotNetEnv;
+
+IHost host = Host
     .CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>
     {
@@ -22,9 +24,10 @@
         
         services.AddTransient<ISlackMessenger>((svc) =>
         {
-            var slackConfigSection = hostContext.Configuration.GetSection("Slack");
-            string webhookUrl = slackConfigSection["WebhookUrl"];
-            return new SlackMessenger(webhookUrl);
+            Env.Load();
+            var webhookUrl = Environment.GetEnvironmentVariable("PITSTOP_APP");
+            
+            return new SlackMessenger("https://hooks.slack.com/services/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");
         });
         
         services.AddHostedService<NotificationWorker>();

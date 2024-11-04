@@ -16,4 +16,6 @@ public class WorkshopManagementFinishViewModel
 
     [Display(Name = "Mechanic notes")]
     public string Notes { get; set; }
+
+    public string LicensePlate { get; set; }
 }

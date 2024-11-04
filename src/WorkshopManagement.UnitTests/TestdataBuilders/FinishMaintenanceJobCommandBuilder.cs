@@ -2,10 +2,14 @@ namespace Pitstop.WorkshopManagement.UnitTests.TestdataBuilders;
 
 public class FinishMaintenanceJobCommandBuilder
 {
-    public Guid JobId { get; private set; }
-    public DateTime ActualStartTime { get; private set; }
-    public DateTime ActualEndTime { get; private set; }
-    public string Notes { get; private set; }
+    
+    public MaintenanceJobBuilder MaintenanceJobBuilder { get; private set; }
+    public CustomerBuilder CustomerBuilder { get; set; }
+    public VehicleBuilder VehicleBuilder { get; set; }
+    public DateTime ActualStartTime { get; set; }
+    public DateTime ActualEndTime { get; set; }
+    public string Notes { get; set; }
+    public Guid JobId { get; set; }
 
     public FinishMaintenanceJobCommandBuilder()
     {
@@ -38,16 +42,28 @@ public class FinishMaintenanceJobCommandBuilder
 
     public FinishMaintenanceJob Build()
     {
-        FinishMaintenanceJob command = new FinishMaintenanceJob(Guid.NewGuid(), JobId,
-            ActualStartTime, ActualEndTime, Notes);
+        var customer = CustomerBuilder
+            .Build();
+
+        var vehicle = VehicleBuilder
+            .WithOwnerId(customer.Id)
+            .Build();
+
+        var job = MaintenanceJobBuilder
+            .WithCustomer(customer)
+            .WithVehicle(vehicle)
+            .Build();
+        
+        FinishMaintenanceJob command = new FinishMaintenanceJob(Guid.NewGuid(), job.Id, job.PlannedTimeslot.StartTime, job.PlannedTimeslot.EndTime, Notes,
+            (customer.Id, customer.Name, customer.TelephoneNumber),
+            (vehicle.Id, vehicle.Brand, vehicle.Type));
         return command;
     }
 
     private void SetDefaults()
     {
-        JobId = Guid.NewGuid();
-        ActualStartTime = DateTime.Today.AddHours(8);
-        ActualEndTime = DateTime.Today.AddHours(11);
-        Notes = $"Notes";
+        CustomerBuilder = new CustomerBuilder();
+        VehicleBuilder = new VehicleBuilder();
+        MaintenanceJobBuilder = new MaintenanceJobBuilder();
     }
 }

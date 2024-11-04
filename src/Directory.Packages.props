@@ -1,5 +1,6 @@
 <Project>
   <ItemGroup>
+    <PackageVersion Include="DotNetEnv" Version="3.1.1" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageVersion Include="Slack.Webhooks" Version="1.1.5" />
     <PackageVersion Include="System.Data.SqlClient" Version="4.8.6" />

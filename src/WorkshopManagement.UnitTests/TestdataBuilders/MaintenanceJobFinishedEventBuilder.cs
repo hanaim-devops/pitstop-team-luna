@@ -6,9 +6,15 @@ public class MaintenanceJobFinishedEventBuilder
     public DateTime ActualStartTime { get; private set; }
     public DateTime ActualEndTime { get; private set; }
     public string Notes { get; private set; }
+    public MaintenanceJobBuilder MaintenanceJobBuilder { get; private set; }
+
+    
+    public CustomerBuilder CustomerBuilder { get; private set; }
+    public VehicleBuilder VehicleBuilder { get; private set; }
 
     public MaintenanceJobFinishedEventBuilder()
     {
+        SetDefaults();
     }
 
     public MaintenanceJobFinishedEventBuilder WithJobId(Guid jobId)
@@ -37,9 +43,32 @@ public class MaintenanceJobFinishedEventBuilder
 
     public MaintenanceJobFinished Build()
     {
+        var customer = CustomerBuilder
+            .Build();
+
+        var vehicle = VehicleBuilder
+            .WithOwnerId(customer.Id)
+            .Build();
+
+        var job = MaintenanceJobBuilder
+            .WithCustomer(customer)
+            .WithVehicle(vehicle)
+            .Build();
+
         MaintenanceJobFinished e = new MaintenanceJobFinished(
-            Guid.NewGuid(), JobId, ActualStartTime, ActualEndTime, Notes);
+            Guid.NewGuid(), job.Id, job.PlannedTimeslot.StartTime, job.PlannedTimeslot.EndTime,
+            job.Notes,
+            (customer.Id, customer.Name, customer.TelephoneNumber),
+            (vehicle.Id, vehicle.Brand, vehicle.Type)
+        );
 
         return e;
+    }
+    
+    private void SetDefaults()
+    {
+        CustomerBuilder = new CustomerBuilder();
+        VehicleBuilder = new VehicleBuilder();
+        MaintenanceJobBuilder = new MaintenanceJobBuilder();
     }
 }
