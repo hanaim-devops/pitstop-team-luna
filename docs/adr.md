@@ -71,3 +71,18 @@ In dit document worden de architectuur-significante beslissingen en bijbehorende
 | **Stakeholder**  | **Action**           | **Status**        | **Date**        |
 |------------------|----------------------|-------------------|-----------------|
 | Osama Halabi     | Decision             | 🟩 **DECIDED**    | 26-10-2024      |
+
+## ADR 5: Implementatie van SonarQube voor Codekwaliteit
+
+| Name              | Implementatie van SonarQube voor Codekwaliteit        |
+|-------------------|-------------------------------------------------------|
+| Current version   | 1                                                     |
+| Current status    | 🟩 **DECIDED**                                       |
+| Problem/Issue     | Er is momenteel geen systeem voor het waarborgen van de codekwaliteit. Dit leidt tot inconsistenties in de code en een verhoogd risico op bugs en technische schulden. Er is behoefte aan een oplossing die statische codeanalyse en rapportages biedt. |
+| Decision          | Implementatie van SonarQube voor het uitvoeren van codeanalyses, het genereren van rapportages over codekwaliteit en het ondersteunen van integratie met CI/CD-processen. |
+| Alternatives      | 1. **Codacy**: Automatische code reviews, maar kan kosten met zich meebrengen en is mogelijk minder flexibel.<br>2. **StyleCop**: Een tool die zich richt op de naleving van codestijlen in C#, maar biedt minder uitgebreide rapportages dan SonarQube.<br>3. **ReSharper**: Een krachtige extensie voor Visual Studio die code-analyse biedt, maar kan duur zijn en een zware impact op de prestaties van de IDE hebben. |
+| Arguments         | 1. SonarQube biedt uitgebreide ondersteuning voor meerdere programmeertalen en stelt teams in staat om consistentie in codekwaliteit te waarborgen.<br>2. Het biedt gedetailleerde rapporten die helpen bij het identificeren van technische schulden en kwetsbaarheden.<br>3. De open-source aard van SonarQube maakt het kosteneffectief, wat past binnen ons budget.<br>4. Integratie met CI/CD-tools bevordert een continue kwaliteitscontrole in de ontwikkelingscyclus.<br>5. SonarQube heeft een actieve community, wat betekent dat ondersteuning en bronnen gemakkelijk toegankelijk zijn. |
+
+| **Stakeholder**  | **Action**           | **Status**        | **Date**   |
+|------------------|----------------------|-------------------|------------|
+| Joris Wittenberg | Decision             | 🟩 **DECIDED**    | 26-10-2024 |
