@@ -13,7 +13,6 @@ public class NotificationWorker : IHostedService, IMessageHandlerCallback
     private readonly IConfiguration _config;
 
     public NotificationWorker(IConfiguration config, IMessageHandler messageHandler, INotificationRepository repo, IEmailNotifier emailNotifier, ISlackMessenger slackMessenger)
-
     {
         _messageHandler = messageHandler;
         _repo = repo;
@@ -110,14 +109,14 @@ public class NotificationWorker : IHostedService, IMessageHandlerCallback
     
     private async Task HandleAsync(RepairOrderApproved acceptedEvent)
     {
-        string subject = "Klant heeft de reparatie goedgekeurd";
-        string body = $"De klant met naam {acceptedEvent.CustomerName} heeft de onderhoudstaak met ID {acceptedEvent.RepairOrderId} en kentekenplaat {acceptedEvent.LicenseNumber} goedgekeurd. U kunt nu beginnen met de reparatie.";
+        string subject = "Customer Has Approved the Repair";
+        string body = $"The customer named {acceptedEvent.CustomerName} has approved the maintenance task with ID {acceptedEvent.RepairOrderId} and license plate {acceptedEvent.LicenseNumber}. You can now begin the repair.";
 
         await _emailNotifier.SendEmailHtmlAsync("noreply@pitstop.nl", "noreply@pitstop.nl", subject, body);
 
         var slackMessage = new SlackMessageBuilder()
-            .AddHeader("Klant heeft de reparatie goedgekeurd")
-            .AddSection($"De klant met naam {acceptedEvent.CustomerName} heeft de onderhoudstaak met ID {acceptedEvent.RepairOrderId} en kentekenplaat {acceptedEvent.LicenseNumber} goedgekeurd. U kunt nu beginnen met de reparatie.")
+            .AddHeader("Customer Has Approved the Repair")
+            .AddSection($"The customer named {acceptedEvent.CustomerName} has approved the maintenance task with ID {acceptedEvent.RepairOrderId} and license plate {acceptedEvent.LicenseNumber}. You can now begin the repair.")
             .BuildSlackMessage();
 
         await _slackMessenger.PostMessage(slackMessage);
@@ -125,14 +124,14 @@ public class NotificationWorker : IHostedService, IMessageHandlerCallback
     
     private async Task HandleAsync(RepairOrderRejected rejectedEvent)
     {
-        string subject = "Klant heeft de reparatie afgewezen";
-        string body = $"De klant met de naam {rejectedEvent.CustomerName} heeft de onderhoudstaak met ID {rejectedEvent.RepairOrderId} en kentekenplaat {rejectedEvent.LicenseNumber} afgewezen. Er kan geen reparatie worden uitgevoerd.";
+        string subject = "Customer Has Rejected the Repair";
+        string body = $"The customer named {rejectedEvent.CustomerName} has rejected the maintenance task with ID {rejectedEvent.RepairOrderId} and license plate {rejectedEvent.LicenseNumber}. No repair can be performed.";
 
         await _emailNotifier.SendEmailHtmlAsync("noreply@pitstop.nl", "noreply@pitstop.nl", subject, body);
 
         var slackMessage = new SlackMessageBuilder()
-            .AddHeader("Klant heeft de reparatie afgewezen")
-            .AddSection($"De klant met de naam {rejectedEvent.CustomerName} heeft de onderhoudstaak met ID {rejectedEvent.RepairOrderId} en kentekenplaat {rejectedEvent.LicenseNumber} afgewezen. Er kan geen reparatie worden uitgevoerd.")
+            .AddHeader("Customer Has Rejected the Repair")
+            .AddSection($"The customer named {rejectedEvent.CustomerName} has rejected the maintenance task with ID {rejectedEvent.RepairOrderId} and license plate {rejectedEvent.LicenseNumber}. No repair can be performed.")
             .BuildSlackMessage();
 
         await _slackMessenger.PostMessage(slackMessage);
@@ -174,13 +173,13 @@ public class NotificationWorker : IHostedService, IMessageHandlerCallback
     private async Task HandleAsync(MaintenanceJobFinished mjf)
     {
         var message = new VehicleManagementFinished("Maintenance finished", $"Dear {mjf.CustomerInfo.Name}",
-        new List<string>([$"Your maintenance job has finished at {DateTime.Now}", $"Please pickup your car with license plate {mjf.VehicleInfo.LicenseNumber}."]));
+        new List<string>([$"Your maintenance job has finished at {DateTime.Now}", $"Please pick up your car with license plate {mjf.VehicleInfo.LicenseNumber}."]));
 
         try
         {   
             Env.Load();
             var webhookUrl = Environment.GetEnvironmentVariable("PITSTOP_APP");
-            Log.Information("webhook = ", webhookUrl);
+            Log.Information("webhook = {WebhookUrl}", webhookUrl);
             Log.Information("Sending notification for finished maintenance job: {job}", mjf.JobId);
             await _slackMessenger.PostMessage(message.BuildMessage());
         }
@@ -224,7 +223,7 @@ public class NotificationWorker : IHostedService, IMessageHandlerCallback
 
             // send notification
             await _emailNotifier.SendEmailAsync(
-                customer.EmailAddress, "noreply@pitstop.nl", "Vehicle maintenance reminder", body.ToString());
+                customer.EmailAddress, "noreply@pitstop.nl", "Vehicle Maintenance Reminder", body.ToString());
 
             // remove jobs for which a notification was sent
             await _repo.RemoveMaintenanceJobsAsync(jobsPerCustomer.Select(job => job.JobId));
